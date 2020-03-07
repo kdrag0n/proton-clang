@@ -1,10 +1,10 @@
-/* Script for ld -Ur: link w/out relocation, do create constructors */
-/* Copyright (C) 2014-2019 Free Software Foundation, Inc.
+/* Script for -Ur */
+/* Copyright (C) 2014-2020 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
    are permitted in any medium without royalty provided the copyright
    notice and this notice are preserved.  */
 OUTPUT_FORMAT(pe-x86-64)
-SEARCH_DIR("/home/dragon/proton-clang-build/install/x86_64-pep/lib"); SEARCH_DIR("/home/dragon/proton-clang-build/install/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
+SEARCH_DIR("/root/build/install/x86_64-pep/lib"); SEARCH_DIR("/root/build/install/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
 SECTIONS
 {
   .text  :
@@ -17,6 +17,7 @@ SECTIONS
           expectation that they will be overridden by the definitions
 	  here.  If we PROVIDE the symbols then they will not be
 	  overridden and global constructors will not be run.
+	  See PR 22762 for more details.
 
 	  This does mean that it is not possible for a user to define
 	  their own __CTOR_LIST__ and __DTOR_LIST__ symbols; if they do,
@@ -25,7 +26,9 @@ SECTIONS
 	  be redefined, a custom linker script will have to be used.
 	  (The custom script can just be a copy of this script with the
 	  PROVIDE() qualifiers added).
-	  See PR 22762 for more details.  */
+	  In particular this means that ld -Ur does not work, because
+	  the proper __CTOR_LIST__ set by ld -Ur is overridden by a
+	  bogus __CTOR_LIST__ set by the final link.  See PR 46.  */
        ___CTOR_LIST__ = .;
        __CTOR_LIST__ = .;
        LONG (-1); LONG (-1);
@@ -42,7 +45,6 @@ SECTIONS
        KEEP (*(.dtor));
        KEEP (*(SORT_BY_NAME(.dtors.*)));
        LONG (0); LONG (0);
-    /* ??? Why is .gcc_exc here?  */
   }
   /* The Cygwin32 library uses a section to avoid copying certain data
      on fork.  This used to be named ".data".  The linker used

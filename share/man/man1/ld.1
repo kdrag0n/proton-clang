@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "LD 1"
-.TH LD 1 "2019-10-12" "binutils-2.33.1" "GNU Development Tools"
+.TH LD 1 "2020-02-01" "binutils-2.34" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -1330,20 +1330,14 @@ libraries.
 When creating a shared library, bind references to global symbols to the
 definition within the shared library, if any.  Normally, it is possible
 for a program linked against a shared library to override the definition
-within the shared library.  This option can also be used with the
-\&\fB\-\-export\-dynamic\fR option, when creating a position independent
-executable, to bind references to global symbols to the definition within
-the executable.  This option is only meaningful on \s-1ELF\s0 platforms which
-support shared libraries and position independent executables.
+within the shared library.  This option is only meaningful on \s-1ELF\s0
+platforms which support shared libraries.
 .IP "\fB\-Bsymbolic\-functions\fR" 4
 .IX Item "-Bsymbolic-functions"
 When creating a shared library, bind references to global function
 symbols to the definition within the shared library, if any.
-This option can also be used with the \fB\-\-export\-dynamic\fR option,
-when creating a position independent executable, to bind references
-to global function symbols to the definition within the executable.
 This option is only meaningful on \s-1ELF\s0 platforms which support shared
-libraries and position independent executables.
+libraries.
 .IP "\fB\-\-dynamic\-list=\fR\fIdynamic-list-file\fR" 4
 .IX Item "--dynamic-list=dynamic-list-file"
 Specify the name of a dynamic list file to the linker.  This is
@@ -2758,11 +2752,14 @@ of the \s-1PE\s0 file header:
 .IX Item "--high-entropy-va"
 Image is compatible with 64\-bit address space layout randomization
 (\s-1ASLR\s0).
+This option also implies \fB\-\-dynamicbase\fR and
+\&\fB\-\-enable\-reloc\-section\fR.
 .IP "\fB\-\-dynamicbase\fR" 4
 .IX Item "--dynamicbase"
 The image base address may be relocated using address space layout
 randomization (\s-1ASLR\s0).  This feature was introduced with \s-1MS\s0 Windows
 Vista for i386 \s-1PE\s0 targets.
+This option also implies \fB\-\-enable\-reloc\-section\fR.
 .IP "\fB\-\-forceinteg\fR" 4
 .IX Item "--forceinteg"
 Code integrity checks are enforced.
@@ -2800,6 +2797,10 @@ same sources are linked.  The option \fB\-\-no\-insert\-timestamp\fR
 can be used to insert a zero value for the timestamp, this ensuring
 that binaries produced from identical sources will compare
 identically.
+.IP "\fB\-\-enable\-reloc\-section\fR" 4
+.IX Item "--enable-reloc-section"
+Create the base relocation table, which is necessary if the image
+is loaded at a different image base than specified in the \s-1PE\s0 header.
 .PP
 The C6X uClinux target uses a binary format called \s-1DSBT\s0 to support shared
 libraries.  Each shared library in the system needs to have a unique index;
@@ -2935,7 +2936,7 @@ the Info entries for \fIbinutils\fR and
 \&\fIld\fR.
 .SH "COPYRIGHT"
 .IX Header "COPYRIGHT"
-Copyright (c) 1991\-2019 Free Software Foundation, Inc.
+Copyright (c) 1991\-2020 Free Software Foundation, Inc.
 .PP
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the \s-1GNU\s0 Free Documentation License, Version 1.3

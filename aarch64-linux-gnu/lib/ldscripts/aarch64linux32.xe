@@ -1,5 +1,5 @@
-/* Script for -z separate-code: generate normal executables with separate code segment */
-/* Copyright (C) 2014-2019 Free Software Foundation, Inc.
+/* Script for -z separate-code */
+/* Copyright (C) 2014-2020 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
    are permitted in any medium without royalty provided the copyright
    notice and this notice are preserved.  */
@@ -7,7 +7,7 @@ OUTPUT_FORMAT("elf32-littleaarch64", "elf32-bigaarch64",
 	      "elf32-littleaarch64")
 OUTPUT_ARCH(aarch64:ilp32)
 ENTRY(_start)
-SEARCH_DIR("=/home/dragon/proton-clang-build/install/aarch64-linux-gnu/libilp32"); SEARCH_DIR("=/usr/local/libilp32"); SEARCH_DIR("=/libilp32"); SEARCH_DIR("=/usr/libilp32"); SEARCH_DIR("=/home/dragon/proton-clang-build/install/aarch64-linux-gnu/lib"); SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
+SEARCH_DIR("=/root/build/install/aarch64-linux-gnu/libilp32"); SEARCH_DIR("=/usr/local/libilp32"); SEARCH_DIR("=/libilp32"); SEARCH_DIR("=/usr/libilp32"); SEARCH_DIR("=/root/build/install/aarch64-linux-gnu/lib"); SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
 SECTIONS
 {
   PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x400000)); . = SEGMENT_START("text-segment", 0x400000) + SIZEOF_HEADERS;
@@ -52,8 +52,9 @@ SECTIONS
     *(.text.exit .text.exit.*)
     *(.text.startup .text.startup.*)
     *(.text.hot .text.hot.*)
+    *(SORT(.text.sorted.*))
     *(.text .stub .text.* .gnu.linkonce.t.*)
-    /* .gnu.warning sections are handled specially by elf32.em.  */
+    /* .gnu.warning sections are handled specially by elf.em.  */
     *(.gnu.warning)
   } =0x1f2003d5
   .fini           :

@@ -1,10 +1,10 @@
 /* Default linker script, for normal executables */
-/* Copyright (C) 2014-2019 Free Software Foundation, Inc.
+/* Copyright (C) 2014-2020 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
    are permitted in any medium without royalty provided the copyright
    notice and this notice are preserved.  */
 OUTPUT_FORMAT(pei-i386)
-SEARCH_DIR("/home/dragon/proton-clang-build/install/x86_64-pep/lib");
+SEARCH_DIR("/root/build/install/x86_64-pep/lib");
 SECTIONS
 {
   /* Make the virtual address and file offset synced if the alignment is
@@ -26,6 +26,7 @@ SECTIONS
           expectation that they will be overridden by the definitions
 	  here.  If we PROVIDE the symbols then they will not be
 	  overridden and global constructors will not be run.
+	  See PR 22762 for more details.
 
 	  This does mean that it is not possible for a user to define
 	  their own __CTOR_LIST__ and __DTOR_LIST__ symbols; if they do,
@@ -34,7 +35,9 @@ SECTIONS
 	  be redefined, a custom linker script will have to be used.
 	  (The custom script can just be a copy of this script with the
 	  PROVIDE() qualifiers added).
-	  See PR 22762 for more details.  */
+	  In particular this means that ld -Ur does not work, because
+	  the proper __CTOR_LIST__ set by ld -Ur is overridden by a
+	  bogus __CTOR_LIST__ set by the final link.  See PR 46.  */
        ___CTOR_LIST__ = .;
        __CTOR_LIST__ = .;
        LONG (-1);

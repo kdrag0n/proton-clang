@@ -1,5 +1,5 @@
-/* Script for -z combreloc: combine and sort reloc sections */
-/* Copyright (C) 2014-2019 Free Software Foundation, Inc.
+/* Script for -z combreloc */
+/* Copyright (C) 2014-2020 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
    are permitted in any medium without royalty provided the copyright
    notice and this notice are preserved.  */
@@ -7,7 +7,7 @@ OUTPUT_FORMAT("elf32-x86-64", "elf32-x86-64",
 	      "elf32-x86-64")
 OUTPUT_ARCH(i386:x64-32)
 ENTRY(_start)
-SEARCH_DIR("/home/dragon/proton-clang-build/install/x86_64-pc-linux-gnu/libx32"); SEARCH_DIR("/home/dragon/proton-clang-build/install/libx32"); SEARCH_DIR("/usr/local/libx32"); SEARCH_DIR("/libx32"); SEARCH_DIR("/usr/libx32"); SEARCH_DIR("/home/dragon/proton-clang-build/install/x86_64-pc-linux-gnu/lib"); SEARCH_DIR("/home/dragon/proton-clang-build/install/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
+SEARCH_DIR("/root/build/install/x86_64-pc-linux-gnu/libx32"); SEARCH_DIR("/root/build/install/libx32"); SEARCH_DIR("/usr/local/libx32"); SEARCH_DIR("/libx32"); SEARCH_DIR("/usr/libx32"); SEARCH_DIR("/root/build/install/x86_64-pc-linux-gnu/lib"); SEARCH_DIR("/root/build/install/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
 SECTIONS
 {
   /* Read-only sections, merged into text segment: */
@@ -59,8 +59,9 @@ SECTIONS
     *(.text.exit .text.exit.*)
     *(.text.startup .text.startup.*)
     *(.text.hot .text.hot.*)
+    *(SORT(.text.sorted.*))
     *(.text .stub .text.* .gnu.linkonce.t.*)
-    /* .gnu.warning sections are handled specially by elf32.em.  */
+    /* .gnu.warning sections are handled specially by elf.em.  */
     *(.gnu.warning)
   }
   .fini           :

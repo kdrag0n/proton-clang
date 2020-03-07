@@ -1059,6 +1059,15 @@ set_target_properties(llvm-extract PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS llvm-extract )
 list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-extract "${_IMPORT_PREFIX}/bin/llvm-extract" )
 
+# Import target "llvm-gsymutil" for configuration "Release"
+set_property(TARGET llvm-gsymutil APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(llvm-gsymutil PROPERTIES
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/llvm-gsymutil"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS llvm-gsymutil )
+list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-gsymutil "${_IMPORT_PREFIX}/bin/llvm-gsymutil" )
+
 # Import target "llvm-ifs" for configuration "Release"
 set_property(TARGET llvm-ifs APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(llvm-ifs PROPERTIES
@@ -1121,6 +1130,15 @@ set_target_properties(llvm-mca PROPERTIES
 
 list(APPEND _IMPORT_CHECK_TARGETS llvm-mca )
 list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-mca "${_IMPORT_PREFIX}/bin/llvm-mca" )
+
+# Import target "llvm-ml" for configuration "Release"
+set_property(TARGET llvm-ml APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(llvm-ml PROPERTIES
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/llvm-ml"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS llvm-ml )
+list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-ml "${_IMPORT_PREFIX}/bin/llvm-ml" )
 
 # Import target "llvm-modextract" for configuration "Release"
 set_property(TARGET llvm-modextract APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)

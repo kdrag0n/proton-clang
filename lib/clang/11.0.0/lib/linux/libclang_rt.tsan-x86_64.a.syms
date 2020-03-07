@@ -406,6 +406,7 @@
   __interceptor_setvbuf;
   __interceptor_shmctl;
   __interceptor_sigaction;
+  __interceptor_sigaltstack;
   __interceptor_sigblock;
   __interceptor_sigemptyset;
   __interceptor_sigfillset;
@@ -863,6 +864,7 @@
   __sanitizer_syscall_post_impl_shmget;
   __sanitizer_syscall_post_impl_shutdown;
   __sanitizer_syscall_post_impl_sigaction;
+  __sanitizer_syscall_post_impl_sigaltstack;
   __sanitizer_syscall_post_impl_signal;
   __sanitizer_syscall_post_impl_signalfd;
   __sanitizer_syscall_post_impl_signalfd4;
@@ -1186,6 +1188,7 @@
   __sanitizer_syscall_pre_impl_shmget;
   __sanitizer_syscall_pre_impl_shutdown;
   __sanitizer_syscall_pre_impl_sigaction;
+  __sanitizer_syscall_pre_impl_sigaltstack;
   __sanitizer_syscall_pre_impl_signal;
   __sanitizer_syscall_pre_impl_signalfd;
   __sanitizer_syscall_pre_impl_signalfd4;
@@ -1640,6 +1643,7 @@
   setvbuf;
   shmctl;
   sigaction;
+  sigaltstack;
   sigblock;
   sigemptyset;
   sigfillset;

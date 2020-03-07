@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "AS 1"
-.TH AS 1 "2019-10-12" "binutils-2.33.1" "GNU Development Tools"
+.TH AS 1 "2020-02-01" "binutils-2.34" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -147,6 +147,7 @@ as [\fB\-a\fR[\fBcdghlns\fR][=\fIfile\fR]] [\fB\-\-alternate\fR] [\fB\-D\fR]
  [\fB\-\-debug\-prefix\-map\fR \fIold\fR=\fInew\fR]
  [\fB\-\-defsym\fR \fIsym\fR=\fIval\fR] [\fB\-f\fR] [\fB\-g\fR] [\fB\-\-gstabs\fR]
  [\fB\-\-gstabs+\fR] [\fB\-\-gdwarf\-2\fR] [\fB\-\-gdwarf\-sections\fR]
+ [\fB\-\-gdwarf\-cie\-version\fR=\fI\s-1VERSION\s0\fR]
  [\fB\-\-help\fR] [\fB\-I\fR \fIdir\fR] [\fB\-J\fR]
  [\fB\-K\fR] [\fB\-L\fR] [\fB\-\-listing\-lhs\-width\fR=\fI\s-1NUM\s0\fR]
  [\fB\-\-listing\-lhs\-width2\fR=\fI\s-1NUM\s0\fR] [\fB\-\-listing\-rhs\-width\fR=\fI\s-1NUM\s0\fR]
@@ -444,7 +445,15 @@ as [\fB\-a\fR[\fBcdghlns\fR][=\fIfile\fR]] [\fB\-\-alternate\fR] [\fB\-D\fR]
  [\fB\-\-[no\-]trampolines\fR]
 .PP
 \&\fITarget Z80 options:\fR
-  [\fB\-z80\fR] [\fB\-r800\fR]
+  [\fB\-z80\fR]|[\fB\-z180\fR]|[\fB\-r800\fR]|[\fB\-ez80\fR]|[\fB\-ez80\-adl\fR]
+  [\fB\-local\-prefix=\fR\fI\s-1PREFIX\s0\fR]
+  [\fB\-colonless\fR]
+  [\fB\-sdcc\fR]
+  [\fB\-fp\-s=\fR\fI\s-1FORMAT\s0\fR]
+  [\fB\-fp\-d=\fR\fI\s-1FORMAT\s0\fR]
+  [\fB\-strict\fR]|[\fB\-full\fR]
+  [\fB\-with\-inst=\fR\fI\s-1INST\s0\fR\fB[,...]\fR] [\fB\-Wnins\fR \fI\s-1INST\s0\fR\fB[,...]\fR]
+  [\fB\-without\-inst=\fR\fI\s-1INST\s0\fR\fB[,...]\fR] [\fB\-Fins\fR \fI\s-1INST\s0\fR\fB[,...]\fR]
   [ \fB\-ignore\-undocumented\-instructions\fR] [\fB\-Wnud\fR]
   [ \fB\-ignore\-unportable\-instructions\fR] [\fB\-Wnup\fR]
   [ \fB\-warn\-undocumented\-instructions\fR] [\fB\-Wud\fR]
@@ -654,6 +663,11 @@ will have its dwarf line number information placed into a section called
 \&\fI.debug_line.text.func\fR.  If the code section is just called \fI.text\fR
 then debug line section will still be called just \fI.debug_line\fR without any
 suffix.
+.IP "\fB\-\-gdwarf\-cie\-version=\fR\fIversion\fR" 4
+.IX Item "--gdwarf-cie-version=version"
+Control which version of \s-1DWARF\s0 Common Information Entries (CIEs) are produced.
+When this flag is not specificed the default is version 1, though some targets
+can modify this default.  Other possible values for \fIversion\fR are 3 or 4.
 .IP "\fB\-\-size\-check=error\fR" 4
 .IX Item "--size-check=error"
 .PD 0
@@ -853,7 +867,7 @@ issue an error message if an attempt is made to assemble an
 instruction which will not execute on the target architecture.  The
 following architecture names are recognized: \f(CW\*(C`armv8\-a\*(C'\fR,
 \&\f(CW\*(C`armv8.1\-a\*(C'\fR, \f(CW\*(C`armv8.2\-a\*(C'\fR, \f(CW\*(C`armv8.3\-a\*(C'\fR, \f(CW\*(C`armv8.4\-a\*(C'\fR
-and \f(CW\*(C`armv8.5\-a\*(C'\fR.
+\&\f(CW\*(C`armv8.5\-a\*(C'\fR, and \f(CW\*(C`armv8.6\-a\*(C'\fR.
 .Sp
 If both \fB\-mcpu\fR and \fB\-march\fR are specified, the
 assembler will use the setting for \fB\-mcpu\fR.  If neither are
@@ -1444,6 +1458,8 @@ accept various extension mnemonics.  For example,
 \&\f(CW\*(C`pconfig\*(C'\fR,
 \&\f(CW\*(C`waitpkg\*(C'\fR,
 \&\f(CW\*(C`cldemote\*(C'\fR,
+\&\f(CW\*(C`rdpru\*(C'\fR,
+\&\f(CW\*(C`mcommit\*(C'\fR,
 \&\f(CW\*(C`lwp\*(C'\fR,
 \&\f(CW\*(C`fma4\*(C'\fR,
 \&\f(CW\*(C`xop\*(C'\fR,
@@ -1620,6 +1636,35 @@ R_X86_64_REX_GOTPCRELX, in 64\-bit mode.
 \&\fB\-mrelax\-relocations=\fR\fIno\fR will not generate relax
 relocations.  The default can be controlled by a configure option
 \&\fB\-\-enable\-x86\-relax\-relocations\fR.
+.IP "\fB\-malign\-branch\-boundary=\fR\fI\s-1NUM\s0\fR" 4
+.IX Item "-malign-branch-boundary=NUM"
+This option controls how the assembler should align branches with segment
+prefixes or \s-1NOP.\s0  \fI\s-1NUM\s0\fR must be a power of 2.  It should be 0 or
+no less than 16.  Branches will be aligned within \fI\s-1NUM\s0\fR byte
+boundary.  \fB\-malign\-branch\-boundary=0\fR, which is the default,
+doesn't align branches.
+.IP "\fB\-malign\-branch=\fR\fI\s-1TYPE\s0\fR\fB[+\fR\fI\s-1TYPE\s0\fR\fB...]\fR" 4
+.IX Item "-malign-branch=TYPE[+TYPE...]"
+This option specifies types of branches to align. \fI\s-1TYPE\s0\fR is
+combination of \fBjcc\fR, which aligns conditional jumps,
+\&\fBfused\fR, which aligns fused conditional jumps, \fBjmp\fR,
+which aligns unconditional jumps, \fBcall\fR which aligns calls,
+\&\fBret\fR, which aligns rets, \fBindirect\fR, which aligns indirect
+jumps and calls.  The default is \fB\-malign\-branch=jcc+fused+jmp\fR.
+.IP "\fB\-malign\-branch\-prefix\-size=\fR\fI\s-1NUM\s0\fR" 4
+.IX Item "-malign-branch-prefix-size=NUM"
+This option specifies the maximum number of prefixes on an instruction
+to align branches.  \fI\s-1NUM\s0\fR should be between 0 and 5.  The default
+\&\fI\s-1NUM\s0\fR is 5.
+.IP "\fB\-mbranches\-within\-32B\-boundaries\fR" 4
+.IX Item "-mbranches-within-32B-boundaries"
+This option aligns conditional jumps, fused conditional jumps and
+unconditional jumps within 32 byte boundary with up to 5 segment prefixes
+on an instruction.  It is equivalent to
+\&\fB\-malign\-branch\-boundary=32\fR
+\&\fB\-malign\-branch=jcc+fused+jmp\fR
+\&\fB\-malign\-branch\-prefix\-size=5\fR.
+The default doesn't align branches.
 .IP "\fB\-mx86\-used\-note=\fR\fIno\fR" 4
 .IX Item "-mx86-used-note=no"
 .PD 0
@@ -2555,7 +2600,8 @@ Specify which s390 processor variant is the target, \fBg5\fR (or
 \&\fBarch3\fR), \fBg6\fR, \fBz900\fR (or \fBarch5\fR), \fBz990\fR (or
 \&\fBarch6\fR), \fBz9\-109\fR, \fBz9\-ec\fR (or \fBarch7\fR), \fBz10\fR (or
 \&\fBarch8\fR), \fBz196\fR (or \fBarch9\fR), \fBzEC12\fR (or \fBarch10\fR),
-\&\fBz13\fR (or \fBarch11\fR), or \fBz14\fR (or \fBarch12\fR).
+\&\fBz13\fR (or \fBarch11\fR), \fBz14\fR (or \fBarch12\fR), or \fBz15\fR
+(or \fBarch13\fR).
 .IP "\fB\-mregnames\fR" 4
 .IX Item "-mregnames"
 .PD 0
@@ -2724,62 +2770,119 @@ potentially be out of range.  In the absence of such jumps this option
 does not affect code size or performance.  The default is
 \&\fB\-\-trampolines\fR.
 .PP
-The following options are available when as is configured for
-a Z80 family processor.
+The following options are available when as is configured for an
+Z80 processor.
+.PP
+\&\f(CW@chapter\fR Z80 Dependent Features
+.SS "Command-line Options"
+.IX Subsection "Command-line Options"
 .IP "\fB\-z80\fR" 4
 .IX Item "-z80"
-Assemble for Z80 processor.
+Produce code for the Z80 processor. By default accepted undocumented
+operations with halves of index registers (\f(CW\*(C`IXL\*(C'\fR, \f(CW\*(C`IXH\*(C'\fR, \f(CW\*(C`IYL\*(C'\fR, \f(CW\*(C`IYH\*(C'\fR) and
+instuction \f(CW\*(C`IN F,(C)\*(C'\fR. Other useful undocumented instructions produces
+warnings. Undocumented instructions may not work on some CPUs, use
+them on your own risk.
 .IP "\fB\-r800\fR" 4
 .IX Item "-r800"
-Assemble for R800 processor.
+Produce code for the R800 processor.
+.IP "\fB\-z180\fR" 4
+.IX Item "-z180"
+Produce code for the Z180 processor.
+.IP "\fB\-ez80\fR" 4
+.IX Item "-ez80"
+Produce code for the eZ80 processor in Z80 memory mode by default.
+.IP "\fB\-ez80\-adl\fR" 4
+.IX Item "-ez80-adl"
+Produce code for the eZ80 processor in \s-1ADL\s0 memory mode by default.
+.IP "\fB\-local\-prefix=\fR\fIprefix\fR" 4
+.IX Item "-local-prefix=prefix"
+Mark all labels with specified prefix as local. But such label can be
+marked global explicitly in the code. This option do not change default
+local label prefix \f(CW\*(C`.L\*(C'\fR, it is just adds new one.
+.IP "\fB\-colonless\fR" 4
+.IX Item "-colonless"
+Accept colonless labels. All names at line begin are treated as labels.
+.IP "\fB\-sdcc\fR" 4
+.IX Item "-sdcc"
+Accept assembler code produced by \s-1SDCC.\s0
+.IP "\fB\-fp\-s=\fR\fI\s-1FORMAT\s0\fR" 4
+.IX Item "-fp-s=FORMAT"
+Single precision floating point numbers format. Default: ieee754 (32 bit).
+.IP "\fB\-fp\-d=\fR\fI\s-1FORMAT\s0\fR" 4
+.IX Item "-fp-d=FORMAT"
+Double precision floating point numbers format. Default: ieee754 (64 bit).
+.IP "\fB\-strict\fR" 4
+.IX Item "-strict"
+Accept documented instructions only.
+.IP "\fB\-full\fR" 4
+.IX Item "-full"
+Accept all known Z80 instructions.
+.IP "\fB\-with\-inst=\fR\fI\s-1INST\s0\fR\fB[,...]\fR" 4
+.IX Item "-with-inst=INST[,...]"
+.PD 0
+.IP "\fB\-Wnins\fR \fI\s-1INST\s0\fR\fB[,...]\fR" 4
+.IX Item "-Wnins INST[,...]"
+.PD
+Enable specified undocumented instruction(s).
+.IP "\fB\-without\-inst=\fR\fI\s-1INST\s0\fR\fB[,...]\fR" 4
+.IX Item "-without-inst=INST[,...]"
+.PD 0
+.IP "\fB\-Fins\fR \fI\s-1INST\s0\fR\fB[,...]\fR" 4
+.IX Item "-Fins INST[,...]"
+.PD
+Disable specified undocumented instruction(s).
 .IP "\fB\-ignore\-undocumented\-instructions\fR" 4
 .IX Item "-ignore-undocumented-instructions"
 .PD 0
 .IP "\fB\-Wnud\fR" 4
 .IX Item "-Wnud"
 .PD
-Assemble undocumented Z80 instructions that also work on R800 without warning.
+Silently assemble undocumented Z80\-instructions that have been adopted
+as documented R800\-instructions .
 .IP "\fB\-ignore\-unportable\-instructions\fR" 4
 .IX Item "-ignore-unportable-instructions"
 .PD 0
 .IP "\fB\-Wnup\fR" 4
 .IX Item "-Wnup"
 .PD
-Assemble all undocumented Z80 instructions without warning.
+Silently assemble all undocumented Z80\-instructions.
 .IP "\fB\-warn\-undocumented\-instructions\fR" 4
 .IX Item "-warn-undocumented-instructions"
 .PD 0
 .IP "\fB\-Wud\fR" 4
 .IX Item "-Wud"
 .PD
-Issue a warning for undocumented Z80 instructions that also work on R800.
+Issue warnings for undocumented Z80\-instructions that work on R800, do
+not assemble other undocumented instructions without warning.
 .IP "\fB\-warn\-unportable\-instructions\fR" 4
 .IX Item "-warn-unportable-instructions"
 .PD 0
 .IP "\fB\-Wup\fR" 4
 .IX Item "-Wup"
 .PD
-Issue a warning for undocumented Z80 instructions that do not work on R800.
+Issue warnings for other undocumented Z80\-instructions, do not treat any
+undocumented instructions as errors.
 .IP "\fB\-forbid\-undocumented\-instructions\fR" 4
 .IX Item "-forbid-undocumented-instructions"
 .PD 0
 .IP "\fB\-Fud\fR" 4
 .IX Item "-Fud"
 .PD
-Treat all undocumented instructions as errors.
+Treat all undocumented z80\-instructions as errors.
 .IP "\fB\-forbid\-unportable\-instructions\fR" 4
 .IX Item "-forbid-unportable-instructions"
 .PD 0
 .IP "\fB\-Fup\fR" 4
 .IX Item "-Fup"
 .PD
-Treat undocumented Z80 instructions that do not work on R800 as errors.
+Treat undocumented z80\-instructions that do not work on R800 as errors.
 .SH "SEE ALSO"
 .IX Header "SEE ALSO"
 \&\fBgcc\fR\|(1), \fBld\fR\|(1), and the Info entries for \fIbinutils\fR and \fIld\fR.
 .SH "COPYRIGHT"
 .IX Header "COPYRIGHT"
-Copyright (c) 1991\-2019 Free Software Foundation, Inc.
+Copyright (c) 1991\-2020 Free Software Foundation, Inc.
 .PP
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the \s-1GNU\s0 Free Documentation License, Version 1.3

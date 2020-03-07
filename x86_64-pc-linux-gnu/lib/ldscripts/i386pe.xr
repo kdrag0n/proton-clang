@@ -1,16 +1,15 @@
-/* Script for ld -r: link without relocation */
-/* Copyright (C) 2014-2019 Free Software Foundation, Inc.
+/* Script for -r */
+/* Copyright (C) 2014-2020 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
    are permitted in any medium without royalty provided the copyright
    notice and this notice are preserved.  */
 OUTPUT_FORMAT(pe-i386)
-SEARCH_DIR("/home/dragon/proton-clang-build/install/x86_64-pep/lib");
+SEARCH_DIR("/root/build/install/x86_64-pep/lib");
 SECTIONS
 {
   .text  :
   {
     *(.text)
-    /* ??? Why is .gcc_exc here?  */
   }
   /* The Cygwin32 library uses a section to avoid copying certain data
      on fork.  This used to be named ".data".  The linker used
