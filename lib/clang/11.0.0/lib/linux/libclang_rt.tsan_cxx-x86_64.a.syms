@@ -25,8 +25,11 @@
   _ZnwmSt11align_val_tRKSt9nothrow_t;
   __tsan_acquire;
   __tsan_atomic*;
+  __tsan_create_fiber;
+  __tsan_destroy_fiber;
   __tsan_flush_memory;
   __tsan_func*;
+  __tsan_get_current_fiber;
   __tsan_init;
   __tsan_java*;
   __tsan_mutex_create;
@@ -41,6 +44,8 @@
   __tsan_mutex_pre_unlock;
   __tsan_read*;
   __tsan_release;
+  __tsan_set_fiber_name;
+  __tsan_switch_to_fiber;
   __tsan_unaligned*;
   __tsan_vptr*;
   __tsan_write*;
