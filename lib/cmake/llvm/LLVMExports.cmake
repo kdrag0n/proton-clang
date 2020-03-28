@@ -766,7 +766,6 @@ add_executable(llvm-split IMPORTED)
 
 # Create imported target llvm-stress
 add_executable(llvm-stress IMPORTED)
-set_property(TARGET llvm-stress PROPERTY ENABLE_EXPORTS 1)
 
 # Create imported target llvm-strings
 add_executable(llvm-strings IMPORTED)

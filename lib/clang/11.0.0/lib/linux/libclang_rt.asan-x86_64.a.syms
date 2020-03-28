@@ -404,6 +404,7 @@
   __interceptor_tsearch;
   __interceptor_ttyname;
   __interceptor_ttyname_r;
+  __interceptor_uname;
   __interceptor_valloc;
   __interceptor_vasprintf;
   __interceptor_vfork;
@@ -1565,6 +1566,7 @@
   tsearch;
   ttyname;
   ttyname_r;
+  uname;
   valloc;
   vasprintf;
   vfork;
