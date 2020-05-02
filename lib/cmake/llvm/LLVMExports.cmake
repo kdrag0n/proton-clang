@@ -812,7 +812,7 @@ set_target_properties(PollyPPCG PROPERTIES
 add_library(Polly STATIC IMPORTED)
 
 set_target_properties(Polly PROPERTIES
-  INTERFACE_LINK_LIBRARIES "PollyISL;LLVMSupport;LLVMCore;LLVMScalarOpts;LLVMInstCombine;LLVMTransformUtils;LLVMAnalysis;LLVMipo;LLVMMC;LLVMPasses;LLVMLinker;LLVMIRReader;LLVMBitReader;LLVMMCParser;LLVMObject;LLVMProfileData;LLVMTarget;LLVMVectorize"
+  INTERFACE_LINK_LIBRARIES "LLVMSupport;LLVMCore;LLVMScalarOpts;LLVMInstCombine;LLVMTransformUtils;LLVMAnalysis;LLVMipo;LLVMMC;LLVMPasses;LLVMLinker;LLVMIRReader;LLVMAnalysis;LLVMBitReader;LLVMMCParser;LLVMObject;LLVMProfileData;LLVMTarget;LLVMVectorize;PollyISL"
 )
 
 # Create imported target LLVMPolly
