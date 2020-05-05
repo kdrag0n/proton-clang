@@ -8,7 +8,7 @@ This toolchain targets the AArch32, AArch64, and x86 architectures. It is built 
 
 Automated builds occur weekly at 3 PM PST on every Saturday using fresh sources from the [LLVM Git monorepo](https://github.com/llvm/llvm-project). If any part of the builds fail, this repository will not be updated. The build scripts (powered by [tc-build](https://github.com/ClangBuiltLinux/tc-build)) behind this can be found [here](https://github.com/kdrag0n/proton-clang-build).
 
-Build notifications and other information can be obtained from the [Telegram channel](https://t.me/proton_clang_ci).
+Build notifications and other information can be obtained from the [Telegram channel](https://t.me/proton_clang).
 
 ## Host compatibility
 
