@@ -16543,6 +16543,48 @@ svuint32_t svsm4e(svuint32_t, svuint32_t);
 __aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svsm4ekey_u32)))
 svuint32_t svsm4ekey(svuint32_t, svuint32_t);
 #endif  //defined(__ARM_FEATURE_SVE2_SM4)
+
+#if defined(__ARM_FEATURE_SVE_MATMUL_FP32)
+#define svmmla_f32(...) __builtin_sve_svmmla_f32(__VA_ARGS__)
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svmmla_f32)))
+svfloat32_t svmmla(svfloat32_t, svfloat32_t, svfloat32_t);
+#endif  //defined(__ARM_FEATURE_SVE_MATMUL_FP32)
+
+#if defined(__ARM_FEATURE_SVE_MATMUL_FP64)
+#define svmmla_f64(...) __builtin_sve_svmmla_f64(__VA_ARGS__)
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svmmla_f64)))
+svfloat64_t svmmla(svfloat64_t, svfloat64_t, svfloat64_t);
+#endif  //defined(__ARM_FEATURE_SVE_MATMUL_FP64)
+
+#if defined(__ARM_FEATURE_SVE_MATMUL_INT8)
+#define svmmla_s32(...) __builtin_sve_svmmla_s32(__VA_ARGS__)
+#define svmmla_u32(...) __builtin_sve_svmmla_u32(__VA_ARGS__)
+#define svsudot_n_s32(...) __builtin_sve_svsudot_n_s32(__VA_ARGS__)
+#define svsudot_s32(...) __builtin_sve_svsudot_s32(__VA_ARGS__)
+#define svsudot_lane_s32(...) __builtin_sve_svsudot_lane_s32(__VA_ARGS__)
+#define svusdot_n_s32(...) __builtin_sve_svusdot_n_s32(__VA_ARGS__)
+#define svusdot_s32(...) __builtin_sve_svusdot_s32(__VA_ARGS__)
+#define svusdot_lane_s32(...) __builtin_sve_svusdot_lane_s32(__VA_ARGS__)
+#define svusmmla_s32(...) __builtin_sve_svusmmla_s32(__VA_ARGS__)
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svmmla_s32)))
+svint32_t svmmla(svint32_t, svint8_t, svint8_t);
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svmmla_u32)))
+svuint32_t svmmla(svuint32_t, svuint8_t, svuint8_t);
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svsudot_n_s32)))
+svint32_t svsudot(svint32_t, svint8_t, uint8_t);
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svsudot_s32)))
+svint32_t svsudot(svint32_t, svint8_t, svuint8_t);
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svsudot_lane_s32)))
+svint32_t svsudot_lane(svint32_t, svint8_t, svuint8_t, uint64_t);
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svusdot_n_s32)))
+svint32_t svusdot(svint32_t, svuint8_t, int8_t);
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svusdot_s32)))
+svint32_t svusdot(svint32_t, svuint8_t, svint8_t);
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svusdot_lane_s32)))
+svint32_t svusdot_lane(svint32_t, svuint8_t, svint8_t, uint64_t);
+__aio __attribute__((__clang_arm_builtin_alias(__builtin_sve_svusmmla_s32)))
+svint32_t svusmmla(svint32_t, svuint8_t, svint8_t);
+#endif  //defined(__ARM_FEATURE_SVE_MATMUL_INT8)
 #if defined(__ARM_FEATURE_SVE2)
 #define svcvtnt_f16_x      svcvtnt_f16_m
 #define svcvtnt_f16_f32_x  svcvtnt_f16_f32_m
