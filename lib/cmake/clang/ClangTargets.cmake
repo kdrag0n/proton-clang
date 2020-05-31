@@ -16,7 +16,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_targetsDefined)
 set(_targetsNotDefined)
 set(_expectedTargets)
-foreach(_expectedTarget clangBasic clangLex clangParse clangAST clangDynamicASTMatchers clangASTMatchers clangCrossTU clangSema clangCodeGen clangAnalysis clangEdit clangRewrite clangDriver clangSerialization clangRewriteFrontend clangFrontend clangFrontendTool clangToolingCore clangToolingInclusions clangToolingRefactoring clangToolingASTDiff clangToolingSyntax clangDependencyScanning clangTransformer clangTooling clangDirectoryWatcher clangIndex clangFormat clang clang-format clangHandleCXX clangHandleLLVM clang-import-test clang-offload-bundler clang-offload-wrapper clang-scan-deps clang-rename clang-refactor clang-cpp libclang)
+foreach(_expectedTarget clangBasic clangLex clangParse clangAST clangDynamicASTMatchers clangASTMatchers clangCrossTU clangSema clangCodeGen clangAnalysis clangEdit clangRewrite clangDriver clangSerialization clangRewriteFrontend clangFrontend clangFrontendTool clangToolingCore clangToolingInclusions clangToolingRefactoring clangToolingASTDiff clangToolingSyntax clangDependencyScanning clangTransformer clangTooling clangDirectoryWatcher clangIndex clangFormat clangTesting diagtool clang clang-format clangHandleCXX clangHandleLLVM clang-import-test clang-offload-bundler clang-offload-wrapper clang-scan-deps clang-rename clang-refactor clang-cpp libclang)
   list(APPEND _expectedTargets ${_expectedTarget})
   if(NOT TARGET ${_expectedTarget})
     list(APPEND _targetsNotDefined ${_expectedTarget})
@@ -245,6 +245,16 @@ add_library(clangFormat STATIC IMPORTED)
 set_target_properties(clangFormat PROPERTIES
   INTERFACE_LINK_LIBRARIES "clangBasic;clangLex;clangToolingCore;clangToolingInclusions;LLVMSupport"
 )
+
+# Create imported target clangTesting
+add_library(clangTesting STATIC IMPORTED)
+
+set_target_properties(clangTesting PROPERTIES
+  INTERFACE_LINK_LIBRARIES "LLVMSupport"
+)
+
+# Create imported target diagtool
+add_executable(diagtool IMPORTED)
 
 # Create imported target clang
 add_executable(clang IMPORTED)

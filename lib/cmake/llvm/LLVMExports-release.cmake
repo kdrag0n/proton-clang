@@ -304,6 +304,16 @@ set_target_properties(LLVMLinker PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS LLVMLinker )
 list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMLinker "${_IMPORT_PREFIX}/lib/libLLVMLinker.a" )
 
+# Import target "LLVMMLPolicies" for configuration "Release"
+set_property(TARGET LLVMMLPolicies APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(LLVMMLPolicies PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libLLVMMLPolicies.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS LLVMMLPolicies )
+list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMMLPolicies "${_IMPORT_PREFIX}/lib/libLLVMMLPolicies.a" )
+
 # Import target "LLVMAnalysis" for configuration "Release"
 set_property(TARGET LLVMAnalysis APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(LLVMAnalysis PROPERTIES
