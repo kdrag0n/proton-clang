@@ -38005,6 +38005,560 @@ __ai float64x1_t vminnm_f64(float64x1_t __p0, float64x1_t __p1) {
   return __ret;
 }
 #endif
+#if defined(__ARM_FEATURE_BF16) && !defined(__aarch64__)
+__ai poly8x8_t vreinterpret_p8_bf16(bfloat16x4_t __p0) {
+  poly8x8_t __ret;
+  __ret = (poly8x8_t)(__p0);
+  return __ret;
+}
+__ai poly64x1_t vreinterpret_p64_bf16(bfloat16x4_t __p0) {
+  poly64x1_t __ret;
+  __ret = (poly64x1_t)(__p0);
+  return __ret;
+}
+__ai poly16x4_t vreinterpret_p16_bf16(bfloat16x4_t __p0) {
+  poly16x4_t __ret;
+  __ret = (poly16x4_t)(__p0);
+  return __ret;
+}
+__ai poly8x16_t vreinterpretq_p8_bf16(bfloat16x8_t __p0) {
+  poly8x16_t __ret;
+  __ret = (poly8x16_t)(__p0);
+  return __ret;
+}
+__ai poly64x2_t vreinterpretq_p64_bf16(bfloat16x8_t __p0) {
+  poly64x2_t __ret;
+  __ret = (poly64x2_t)(__p0);
+  return __ret;
+}
+__ai poly16x8_t vreinterpretq_p16_bf16(bfloat16x8_t __p0) {
+  poly16x8_t __ret;
+  __ret = (poly16x8_t)(__p0);
+  return __ret;
+}
+__ai uint8x16_t vreinterpretq_u8_bf16(bfloat16x8_t __p0) {
+  uint8x16_t __ret;
+  __ret = (uint8x16_t)(__p0);
+  return __ret;
+}
+__ai uint32x4_t vreinterpretq_u32_bf16(bfloat16x8_t __p0) {
+  uint32x4_t __ret;
+  __ret = (uint32x4_t)(__p0);
+  return __ret;
+}
+__ai uint64x2_t vreinterpretq_u64_bf16(bfloat16x8_t __p0) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t)(__p0);
+  return __ret;
+}
+__ai uint16x8_t vreinterpretq_u16_bf16(bfloat16x8_t __p0) {
+  uint16x8_t __ret;
+  __ret = (uint16x8_t)(__p0);
+  return __ret;
+}
+__ai int8x16_t vreinterpretq_s8_bf16(bfloat16x8_t __p0) {
+  int8x16_t __ret;
+  __ret = (int8x16_t)(__p0);
+  return __ret;
+}
+__ai float32x4_t vreinterpretq_f32_bf16(bfloat16x8_t __p0) {
+  float32x4_t __ret;
+  __ret = (float32x4_t)(__p0);
+  return __ret;
+}
+__ai float16x8_t vreinterpretq_f16_bf16(bfloat16x8_t __p0) {
+  float16x8_t __ret;
+  __ret = (float16x8_t)(__p0);
+  return __ret;
+}
+__ai int32x4_t vreinterpretq_s32_bf16(bfloat16x8_t __p0) {
+  int32x4_t __ret;
+  __ret = (int32x4_t)(__p0);
+  return __ret;
+}
+__ai int64x2_t vreinterpretq_s64_bf16(bfloat16x8_t __p0) {
+  int64x2_t __ret;
+  __ret = (int64x2_t)(__p0);
+  return __ret;
+}
+__ai int16x8_t vreinterpretq_s16_bf16(bfloat16x8_t __p0) {
+  int16x8_t __ret;
+  __ret = (int16x8_t)(__p0);
+  return __ret;
+}
+__ai uint8x8_t vreinterpret_u8_bf16(bfloat16x4_t __p0) {
+  uint8x8_t __ret;
+  __ret = (uint8x8_t)(__p0);
+  return __ret;
+}
+__ai uint32x2_t vreinterpret_u32_bf16(bfloat16x4_t __p0) {
+  uint32x2_t __ret;
+  __ret = (uint32x2_t)(__p0);
+  return __ret;
+}
+__ai uint64x1_t vreinterpret_u64_bf16(bfloat16x4_t __p0) {
+  uint64x1_t __ret;
+  __ret = (uint64x1_t)(__p0);
+  return __ret;
+}
+__ai uint16x4_t vreinterpret_u16_bf16(bfloat16x4_t __p0) {
+  uint16x4_t __ret;
+  __ret = (uint16x4_t)(__p0);
+  return __ret;
+}
+__ai int8x8_t vreinterpret_s8_bf16(bfloat16x4_t __p0) {
+  int8x8_t __ret;
+  __ret = (int8x8_t)(__p0);
+  return __ret;
+}
+__ai float32x2_t vreinterpret_f32_bf16(bfloat16x4_t __p0) {
+  float32x2_t __ret;
+  __ret = (float32x2_t)(__p0);
+  return __ret;
+}
+__ai float16x4_t vreinterpret_f16_bf16(bfloat16x4_t __p0) {
+  float16x4_t __ret;
+  __ret = (float16x4_t)(__p0);
+  return __ret;
+}
+__ai int32x2_t vreinterpret_s32_bf16(bfloat16x4_t __p0) {
+  int32x2_t __ret;
+  __ret = (int32x2_t)(__p0);
+  return __ret;
+}
+__ai int64x1_t vreinterpret_s64_bf16(bfloat16x4_t __p0) {
+  int64x1_t __ret;
+  __ret = (int64x1_t)(__p0);
+  return __ret;
+}
+__ai int16x4_t vreinterpret_s16_bf16(bfloat16x4_t __p0) {
+  int16x4_t __ret;
+  __ret = (int16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_p8(poly8x16_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_p64(poly64x2_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_p16(poly16x8_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_u8(uint8x16_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_u32(uint32x4_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_u64(uint64x2_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_u16(uint16x8_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_s8(int8x16_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_f32(float32x4_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_f16(float16x8_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_s32(int32x4_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_s64(int64x2_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_s16(int16x8_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_p8(poly8x8_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_p64(poly64x1_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_p16(poly16x4_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_u8(uint8x8_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_u32(uint32x2_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_u64(uint64x1_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_u16(uint16x4_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_s8(int8x8_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_f32(float32x2_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_f16(float16x4_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_s32(int32x2_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_s64(int64x1_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_s16(int16x4_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+#endif
+#if defined(__ARM_FEATURE_BF16) && defined(__aarch64__)
+__ai poly8x8_t vreinterpret_p8_bf16(bfloat16x4_t __p0) {
+  poly8x8_t __ret;
+  __ret = (poly8x8_t)(__p0);
+  return __ret;
+}
+__ai poly64x1_t vreinterpret_p64_bf16(bfloat16x4_t __p0) {
+  poly64x1_t __ret;
+  __ret = (poly64x1_t)(__p0);
+  return __ret;
+}
+__ai poly16x4_t vreinterpret_p16_bf16(bfloat16x4_t __p0) {
+  poly16x4_t __ret;
+  __ret = (poly16x4_t)(__p0);
+  return __ret;
+}
+__ai poly8x16_t vreinterpretq_p8_bf16(bfloat16x8_t __p0) {
+  poly8x16_t __ret;
+  __ret = (poly8x16_t)(__p0);
+  return __ret;
+}
+__ai poly128_t vreinterpretq_p128_bf16(bfloat16x8_t __p0) {
+  poly128_t __ret;
+  __ret = (poly128_t)(__p0);
+  return __ret;
+}
+__ai poly64x2_t vreinterpretq_p64_bf16(bfloat16x8_t __p0) {
+  poly64x2_t __ret;
+  __ret = (poly64x2_t)(__p0);
+  return __ret;
+}
+__ai poly16x8_t vreinterpretq_p16_bf16(bfloat16x8_t __p0) {
+  poly16x8_t __ret;
+  __ret = (poly16x8_t)(__p0);
+  return __ret;
+}
+__ai uint8x16_t vreinterpretq_u8_bf16(bfloat16x8_t __p0) {
+  uint8x16_t __ret;
+  __ret = (uint8x16_t)(__p0);
+  return __ret;
+}
+__ai uint32x4_t vreinterpretq_u32_bf16(bfloat16x8_t __p0) {
+  uint32x4_t __ret;
+  __ret = (uint32x4_t)(__p0);
+  return __ret;
+}
+__ai uint64x2_t vreinterpretq_u64_bf16(bfloat16x8_t __p0) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t)(__p0);
+  return __ret;
+}
+__ai uint16x8_t vreinterpretq_u16_bf16(bfloat16x8_t __p0) {
+  uint16x8_t __ret;
+  __ret = (uint16x8_t)(__p0);
+  return __ret;
+}
+__ai int8x16_t vreinterpretq_s8_bf16(bfloat16x8_t __p0) {
+  int8x16_t __ret;
+  __ret = (int8x16_t)(__p0);
+  return __ret;
+}
+__ai float64x2_t vreinterpretq_f64_bf16(bfloat16x8_t __p0) {
+  float64x2_t __ret;
+  __ret = (float64x2_t)(__p0);
+  return __ret;
+}
+__ai float32x4_t vreinterpretq_f32_bf16(bfloat16x8_t __p0) {
+  float32x4_t __ret;
+  __ret = (float32x4_t)(__p0);
+  return __ret;
+}
+__ai float16x8_t vreinterpretq_f16_bf16(bfloat16x8_t __p0) {
+  float16x8_t __ret;
+  __ret = (float16x8_t)(__p0);
+  return __ret;
+}
+__ai int32x4_t vreinterpretq_s32_bf16(bfloat16x8_t __p0) {
+  int32x4_t __ret;
+  __ret = (int32x4_t)(__p0);
+  return __ret;
+}
+__ai int64x2_t vreinterpretq_s64_bf16(bfloat16x8_t __p0) {
+  int64x2_t __ret;
+  __ret = (int64x2_t)(__p0);
+  return __ret;
+}
+__ai int16x8_t vreinterpretq_s16_bf16(bfloat16x8_t __p0) {
+  int16x8_t __ret;
+  __ret = (int16x8_t)(__p0);
+  return __ret;
+}
+__ai uint8x8_t vreinterpret_u8_bf16(bfloat16x4_t __p0) {
+  uint8x8_t __ret;
+  __ret = (uint8x8_t)(__p0);
+  return __ret;
+}
+__ai uint32x2_t vreinterpret_u32_bf16(bfloat16x4_t __p0) {
+  uint32x2_t __ret;
+  __ret = (uint32x2_t)(__p0);
+  return __ret;
+}
+__ai uint64x1_t vreinterpret_u64_bf16(bfloat16x4_t __p0) {
+  uint64x1_t __ret;
+  __ret = (uint64x1_t)(__p0);
+  return __ret;
+}
+__ai uint16x4_t vreinterpret_u16_bf16(bfloat16x4_t __p0) {
+  uint16x4_t __ret;
+  __ret = (uint16x4_t)(__p0);
+  return __ret;
+}
+__ai int8x8_t vreinterpret_s8_bf16(bfloat16x4_t __p0) {
+  int8x8_t __ret;
+  __ret = (int8x8_t)(__p0);
+  return __ret;
+}
+__ai float64x1_t vreinterpret_f64_bf16(bfloat16x4_t __p0) {
+  float64x1_t __ret;
+  __ret = (float64x1_t)(__p0);
+  return __ret;
+}
+__ai float32x2_t vreinterpret_f32_bf16(bfloat16x4_t __p0) {
+  float32x2_t __ret;
+  __ret = (float32x2_t)(__p0);
+  return __ret;
+}
+__ai float16x4_t vreinterpret_f16_bf16(bfloat16x4_t __p0) {
+  float16x4_t __ret;
+  __ret = (float16x4_t)(__p0);
+  return __ret;
+}
+__ai int32x2_t vreinterpret_s32_bf16(bfloat16x4_t __p0) {
+  int32x2_t __ret;
+  __ret = (int32x2_t)(__p0);
+  return __ret;
+}
+__ai int64x1_t vreinterpret_s64_bf16(bfloat16x4_t __p0) {
+  int64x1_t __ret;
+  __ret = (int64x1_t)(__p0);
+  return __ret;
+}
+__ai int16x4_t vreinterpret_s16_bf16(bfloat16x4_t __p0) {
+  int16x4_t __ret;
+  __ret = (int16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_p8(poly8x16_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_p128(poly128_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_p64(poly64x2_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_p16(poly16x8_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_u8(uint8x16_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_u32(uint32x4_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_u64(uint64x2_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_u16(uint16x8_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_s8(int8x16_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_f64(float64x2_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_f32(float32x4_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_f16(float16x8_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_s32(int32x4_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_s64(int64x2_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x8_t vreinterpretq_bf16_s16(int16x8_t __p0) {
+  bfloat16x8_t __ret;
+  __ret = (bfloat16x8_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_p8(poly8x8_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_p64(poly64x1_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_p16(poly16x4_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_u8(uint8x8_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_u32(uint32x2_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_u64(uint64x1_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_u16(uint16x4_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_s8(int8x8_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_f64(float64x1_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_f32(float32x2_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_f16(float16x4_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_s32(int32x2_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_s64(int64x1_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+__ai bfloat16x4_t vreinterpret_bf16_s16(int16x4_t __p0) {
+  bfloat16x4_t __ret;
+  __ret = (bfloat16x4_t)(__p0);
+  return __ret;
+}
+#endif
 #if defined(__ARM_FEATURE_BF16_VECTOR_ARITHMETIC)
 #ifdef __LITTLE_ENDIAN__
 #define splatq_lane_bf16(__p0, __p1) __extension__ ({ \
