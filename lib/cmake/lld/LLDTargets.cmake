@@ -75,7 +75,7 @@ set_target_properties(lldDriver PROPERTIES
 add_library(lldMachO STATIC IMPORTED)
 
 set_target_properties(lldMachO PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCommon;lldCore;lldYAML;-lpthread;LLVMDebugInfoDWARF;LLVMDemangle;LLVMObject;LLVMSupport"
+  INTERFACE_LINK_LIBRARIES "lldCommon;lldCore;lldYAML;-lpthread;LLVMDebugInfoDWARF;LLVMDemangle;LLVMObject;LLVMSupport;LLVMTextAPI"
 )
 
 # Create imported target lldYAML
@@ -167,7 +167,7 @@ unset(_IMPORT_CHECK_TARGETS)
 # Make sure the targets which have been exported in some other 
 # export set exist.
 unset(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)
-foreach(_target "LLVMCodeGen" "LLVMCore" "LLVMDebugInfoDWARF" "LLVMDemangle" "LLVMMC" "LLVMOption" "LLVMSupport" "LLVMTarget" "LLVMBinaryFormat" "LLVMObject" "LLVMARMCodeGen" "LLVMARMAsmParser" "LLVMARMDesc" "LLVMARMDisassembler" "LLVMARMInfo" "LLVMARMUtils" "LLVMAArch64CodeGen" "LLVMAArch64AsmParser" "LLVMAArch64Desc" "LLVMAArch64Disassembler" "LLVMAArch64Info" "LLVMAArch64Utils" "LLVMX86CodeGen" "LLVMX86AsmParser" "LLVMX86Desc" "LLVMX86Disassembler" "LLVMX86Info" "LLVMDebugInfoCodeView" "LLVMDebugInfoMSF" "LLVMDebugInfoPDB" "LLVMLibDriver" "LLVMLTO" "LLVMPasses" "LLVMWindowsManifest" "LLVMBitWriter" "LLVMTextAPI" )
+foreach(_target "LLVMCodeGen" "LLVMCore" "LLVMDebugInfoDWARF" "LLVMDemangle" "LLVMMC" "LLVMOption" "LLVMSupport" "LLVMTarget" "LLVMBinaryFormat" "LLVMObject" "LLVMTextAPI" "LLVMARMCodeGen" "LLVMARMAsmParser" "LLVMARMDesc" "LLVMARMDisassembler" "LLVMARMInfo" "LLVMARMUtils" "LLVMAArch64CodeGen" "LLVMAArch64AsmParser" "LLVMAArch64Desc" "LLVMAArch64Disassembler" "LLVMAArch64Info" "LLVMAArch64Utils" "LLVMX86CodeGen" "LLVMX86AsmParser" "LLVMX86Desc" "LLVMX86Disassembler" "LLVMX86Info" "LLVMDebugInfoCodeView" "LLVMDebugInfoMSF" "LLVMDebugInfoPDB" "LLVMLibDriver" "LLVMLTO" "LLVMPasses" "LLVMWindowsManifest" "LLVMBitWriter" )
   if(NOT TARGET "${_target}" )
     set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets "${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets} ${_target}")
   endif()

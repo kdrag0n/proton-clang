@@ -230,6 +230,8 @@
   __interceptor_modfl;
   __interceptor_mprobe;
   __interceptor_mprotect;
+  __interceptor_msgrcv;
+  __interceptor_msgsnd;
   __interceptor_munlock;
   __interceptor_munlockall;
   __interceptor_name_to_handle_at;
@@ -1396,6 +1398,8 @@
   modfl;
   mprobe;
   mprotect;
+  msgrcv;
+  msgsnd;
   munlock;
   munlockall;
   name_to_handle_at;

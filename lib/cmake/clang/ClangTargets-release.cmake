@@ -342,15 +342,6 @@ set_target_properties(clangHandleLLVM PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS clangHandleLLVM )
 list(APPEND _IMPORT_CHECK_FILES_FOR_clangHandleLLVM "${_IMPORT_PREFIX}/lib/libclangHandleLLVM.a" )
 
-# Import target "clang-import-test" for configuration "Release"
-set_property(TARGET clang-import-test APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(clang-import-test PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/clang-import-test"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS clang-import-test )
-list(APPEND _IMPORT_CHECK_FILES_FOR_clang-import-test "${_IMPORT_PREFIX}/bin/clang-import-test" )
-
 # Import target "clang-offload-bundler" for configuration "Release"
 set_property(TARGET clang-offload-bundler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(clang-offload-bundler PROPERTIES
