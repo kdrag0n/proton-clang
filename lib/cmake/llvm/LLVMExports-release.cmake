@@ -184,6 +184,16 @@ set_target_properties(LLVMExtensions PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS LLVMExtensions )
 list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMExtensions "${_IMPORT_PREFIX}/lib/libLLVMExtensions.a" )
 
+# Import target "LLVMFrontendOpenACC" for configuration "Release"
+set_property(TARGET LLVMFrontendOpenACC APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(LLVMFrontendOpenACC PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libLLVMFrontendOpenACC.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS LLVMFrontendOpenACC )
+list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMFrontendOpenACC "${_IMPORT_PREFIX}/lib/libLLVMFrontendOpenACC.a" )
+
 # Import target "LLVMFrontendOpenMP" for configuration "Release"
 set_property(TARGET LLVMFrontendOpenMP APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(LLVMFrontendOpenMP PROPERTIES
@@ -817,16 +827,17 @@ list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMWindowsManifest "${_IMPORT_PREFIX}/lib/l
 # Import target "LTO" for configuration "Release"
 set_property(TARGET LTO APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(LTO PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libLTO.so.11git"
-  IMPORTED_SONAME_RELEASE "libLTO.so.11git"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libLTO.so.12git"
+  IMPORTED_SONAME_RELEASE "libLTO.so.12git"
   )
 
 list(APPEND _IMPORT_CHECK_TARGETS LTO )
-list(APPEND _IMPORT_CHECK_FILES_FOR_LTO "${_IMPORT_PREFIX}/lib/libLTO.so.11git" )
+list(APPEND _IMPORT_CHECK_FILES_FOR_LTO "${_IMPORT_PREFIX}/lib/libLTO.so.12git" )
 
 # Import target "LLVMgold" for configuration "Release"
 set_property(TARGET LLVMgold APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(LLVMgold PROPERTIES
+  IMPORTED_COMMON_LANGUAGE_RUNTIME_RELEASE ""
   IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/LLVMgold.so"
   IMPORTED_NO_SONAME_RELEASE "TRUE"
   )
@@ -1086,6 +1097,15 @@ set_target_properties(llvm-jitlink PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS llvm-jitlink )
 list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-jitlink "${_IMPORT_PREFIX}/bin/llvm-jitlink" )
 
+# Import target "llvm-libtool-darwin" for configuration "Release"
+set_property(TARGET llvm-libtool-darwin APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(llvm-libtool-darwin PROPERTIES
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/llvm-libtool-darwin"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS llvm-libtool-darwin )
+list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-libtool-darwin "${_IMPORT_PREFIX}/bin/llvm-libtool-darwin" )
+
 # Import target "llvm-link" for configuration "Release"
 set_property(TARGET llvm-link APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(llvm-link PROPERTIES
@@ -1323,12 +1343,12 @@ list(APPEND _IMPORT_CHECK_FILES_FOR_opt "${_IMPORT_PREFIX}/bin/opt" )
 # Import target "Remarks" for configuration "Release"
 set_property(TARGET Remarks APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(Remarks PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libRemarks.so.11git"
-  IMPORTED_SONAME_RELEASE "libRemarks.so.11git"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libRemarks.so.12git"
+  IMPORTED_SONAME_RELEASE "libRemarks.so.12git"
   )
 
 list(APPEND _IMPORT_CHECK_TARGETS Remarks )
-list(APPEND _IMPORT_CHECK_FILES_FOR_Remarks "${_IMPORT_PREFIX}/lib/libRemarks.so.11git" )
+list(APPEND _IMPORT_CHECK_FILES_FOR_Remarks "${_IMPORT_PREFIX}/lib/libRemarks.so.12git" )
 
 # Import target "sancov" for configuration "Release"
 set_property(TARGET sancov APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
@@ -1399,6 +1419,7 @@ list(APPEND _IMPORT_CHECK_FILES_FOR_Polly "${_IMPORT_PREFIX}/lib/libPolly.a" )
 # Import target "LLVMPolly" for configuration "Release"
 set_property(TARGET LLVMPolly APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(LLVMPolly PROPERTIES
+  IMPORTED_COMMON_LANGUAGE_RUNTIME_RELEASE ""
   IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/LLVMPolly.so"
   IMPORTED_NO_SONAME_RELEASE "TRUE"
   )
