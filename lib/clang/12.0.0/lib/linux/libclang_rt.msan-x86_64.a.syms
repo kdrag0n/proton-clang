@@ -551,6 +551,7 @@
   __interceptor_xdr_bool;
   __interceptor_xdr_bytes;
   __interceptor_xdr_char;
+  __interceptor_xdr_destroy;
   __interceptor_xdr_double;
   __interceptor_xdr_enum;
   __interceptor_xdr_float;
@@ -577,6 +578,7 @@
   __interceptor_xdr_uint64_t;
   __interceptor_xdr_uint8_t;
   __interceptor_xdrmem_create;
+  __interceptor_xdrrec_create;
   __interceptor_xdrstdio_create;
   __isoc99_fprintf;
   __isoc99_fscanf;
@@ -1815,6 +1817,7 @@
   xdr_bool;
   xdr_bytes;
   xdr_char;
+  xdr_destroy;
   xdr_double;
   xdr_enum;
   xdr_float;
@@ -1841,5 +1844,6 @@
   xdr_uint64_t;
   xdr_uint8_t;
   xdrmem_create;
+  xdrrec_create;
   xdrstdio_create;
 };
