@@ -899,15 +899,6 @@ set_target_properties(dsymutil PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS dsymutil )
 list(APPEND _IMPORT_CHECK_FILES_FOR_dsymutil "${_IMPORT_PREFIX}/bin/dsymutil" )
 
-# Import target "extract" for configuration "Release"
-set_property(TARGET extract APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(extract PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/extract"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS extract )
-list(APPEND _IMPORT_CHECK_FILES_FOR_extract "${_IMPORT_PREFIX}/bin/extract" )
-
 # Import target "llc" for configuration "Release"
 set_property(TARGET llc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(llc PROPERTIES
