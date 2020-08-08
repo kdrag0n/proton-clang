@@ -1368,6 +1368,15 @@ set_target_properties(sanstats PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS sanstats )
 list(APPEND _IMPORT_CHECK_FILES_FOR_sanstats "${_IMPORT_PREFIX}/bin/sanstats" )
 
+# Import target "split-file" for configuration "Release"
+set_property(TARGET split-file APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(split-file PROPERTIES
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/split-file"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS split-file )
+list(APPEND _IMPORT_CHECK_FILES_FOR_split-file "${_IMPORT_PREFIX}/bin/split-file" )
+
 # Import target "verify-uselistorder" for configuration "Release"
 set_property(TARGET verify-uselistorder APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(verify-uselistorder PROPERTIES
