@@ -275,6 +275,16 @@ set_target_properties(clangIndex PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS clangIndex )
 list(APPEND _IMPORT_CHECK_FILES_FOR_clangIndex "${_IMPORT_PREFIX}/lib/libclangIndex.a" )
 
+# Import target "clangIndexSerialization" for configuration "Release"
+set_property(TARGET clangIndexSerialization APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(clangIndexSerialization PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libclangIndexSerialization.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS clangIndexSerialization )
+list(APPEND _IMPORT_CHECK_FILES_FOR_clangIndexSerialization "${_IMPORT_PREFIX}/lib/libclangIndexSerialization.a" )
+
 # Import target "clangFormat" for configuration "Release"
 set_property(TARGET clangFormat APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(clangFormat PROPERTIES

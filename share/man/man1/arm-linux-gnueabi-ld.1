@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "LD 1"
-.TH LD 1 "2020-02-01" "binutils-2.34" "GNU Development Tools"
+.TH LD 1 "2020-07-24" "binutils-2.35" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -362,6 +362,46 @@ specified in the library.  If specified multiple times \f(CW\*(C`DT_DEPAUDIT\*(C
 will contain a colon separated list of audit interfaces to use.  This
 option is only meaningful on \s-1ELF\s0 platforms supporting the rtld-audit interface.
 The \-P option is provided for Solaris compatibility.
+.IP "\fB\-\-enable\-non\-contiguous\-regions\fR" 4
+.IX Item "--enable-non-contiguous-regions"
+This option avoids generating an error if an input section does not
+fit a matching output section. The linker tries to allocate the input
+section to subseque nt matching output sections, and generates an
+error only if no output section is large enough.  This is useful when
+several non-contiguous memory regions are available and the input
+section does not require a particular one.  The order in which input
+sections are evaluated does not change, for instance:
+.Sp
+.Vb 10
+\&          MEMORY {
+\&            MEM1 (rwx) : ORIGIN : 0x1000, LENGTH = 0x14
+\&            MEM2 (rwx) : ORIGIN : 0x1000, LENGTH = 0x40
+\&            MEM3 (rwx) : ORIGIN : 0x2000, LENGTH = 0x40
+\&          }
+\&          SECTIONS {
+\&            mem1 : { *(.data.*); } > MEM1
+\&            mem2 : { *(.data.*); } > MEM2
+\&            mem3 : { *(.data.*); } > MEM2
+\&          }
+\&        
+\&          with input sections:
+\&          .data.1: size 8
+\&          .data.2: size 0x10
+\&          .data.3: size 4
+\&        
+\&          results in .data.1 affected to mem1, and .data.2 and .data.3
+\&          affected to mem2, even though .data.3 would fit in mem3.
+.Ve
+.Sp
+This option is incompatible with \s-1INSERT\s0 statements because it changes
+the way input sections are mapped to output sections.
+.IP "\fB\-\-enable\-non\-contiguous\-regions\-warnings\fR" 4
+.IX Item "--enable-non-contiguous-regions-warnings"
+This option enables warnings when
+\&\f(CW\*(C`\-\-enable\-non\-contiguous\-regions\*(C'\fR allows possibly unexpected
+matches in sections mapping, potentially leading to silently
+discarding a section instead of failing because it does not fit any
+output region.
 .IP "\fB\-e\fR \fIentry\fR" 4
 .IX Item "-e entry"
 .PD 0
@@ -426,6 +466,20 @@ See the description of \fB\-\-dynamic\-list\fR.
 Note that this option is specific to \s-1ELF\s0 targeted ports.  \s-1PE\s0 targets
 support a similar function to export all symbols from a \s-1DLL\s0 or \s-1EXE\s0; see
 the description of \fB\-\-export\-all\-symbols\fR below.
+.IP "\fB\-\-export\-dynamic\-symbol=\fR\fIglob\fR" 4
+.IX Item "--export-dynamic-symbol=glob"
+When creating a dynamically linked executable, symbols matching
+\&\fIglob\fR will be added to the dynamic symbol table. When creating a
+shared library, references to symbols matching \fIglob\fR will not be
+bound to the definitions within the shared library. This option is a
+no-op when creating a shared library and \fB\-Bsymbolic\fR or
+\&\fB\-\-dynamic\-list\fR are not specified. This option is only meaningful
+on \s-1ELF\s0 platforms which support shared libraries.
+.IP "\fB\-\-export\-dynamic\-symbol\-list=\fR\fIfile\fR" 4
+.IX Item "--export-dynamic-symbol-list=file"
+Specify a \fB\-\-export\-dynamic\-symbol\fR for each pattern in the file.
+The format of the file is the same as the version node without
+scope and node name.  See \fB\s-1VERSION\s0\fR for more information.
 .IP "\fB\-EB\fR" 4
 .IX Item "-EB"
 Link big-endian objects.  This affects the default output format.
@@ -708,6 +762,17 @@ shared libraries.  Use \fB\-Bdynamic\fR for this.
 Use \fIoutput\fR as the name for the program produced by \fBld\fR; if this
 option is not specified, the name \fIa.out\fR is used by default.  The
 script command \f(CW\*(C`OUTPUT\*(C'\fR can also specify the output file name.
+.IP "\fB\-\-dependency\-file=\fR\fIdepfile\fR" 4
+.IX Item "--dependency-file=depfile"
+Write a \fIdependency file\fR to \fIdepfile\fR.  This file contains a rule
+suitable for \f(CW\*(C`make\*(C'\fR describing the output file and all the input files
+that were read to produce it.  The output is similar to the compiler's
+output with \fB\-M \-MP\fR.  Note that there is no option like the compiler's \fB\-MM\fR,
+to exclude \*(L"system files\*(R" (which is not a well-specified concept in the
+linker, unlike \*(L"system headers\*(R" in the compiler).  So the output from
+\&\fB\-\-dependency\-file\fR is always specific to the exact state of the
+installation where it was produced, and should not be copied into
+distributed makefiles without careful editing.
 .IP "\fB\-O\fR \fIlevel\fR" 4
 .IX Item "-O level"
 If \fIlevel\fR is a numeric values greater than zero \fBld\fR optimizes
@@ -1197,6 +1262,16 @@ Linux/i386 and Linux/x86_64.
 Specify a stack size for an \s-1ELF\s0 \f(CW\*(C`PT_GNU_STACK\*(C'\fR segment.
 Specifying zero will override any default non-zero sized
 \&\f(CW\*(C`PT_GNU_STACK\*(C'\fR segment creation.
+.IP "\fBstart\-stop\-visibility=\fR\fIvalue\fR" 4
+.IX Item "start-stop-visibility=value"
+Specify the \s-1ELF\s0 symbol visibility for synthesized
+\&\f(CW\*(C`_\|_start_SECNAME\*(C'\fR and \f(CW\*(C`_\|_stop_SECNAME\*(C'\fR symbols.  \fIvalue\fR must be exactly \fBdefault\fR,
+\&\fBinternal\fR, \fBhidden\fR, or \fBprotected\fR.  If no \fB\-z
+start-stop-visibility\fR option is given, \fBprotected\fR is used for
+compatibility with historical practice.  However, it's highly
+recommended to use \fB\-z start\-stop\-visibility=hidden\fR in new
+programs and shared libraries so that these symbols are not exported
+between shared objects, which is not usually what's intended.
 .IP "\fBtext\fR" 4
 .IX Item "text"
 .PD 0
@@ -1205,9 +1280,9 @@ Specifying zero will override any default non-zero sized
 .IP "\fBtextoff\fR" 4
 .IX Item "textoff"
 .PD
-Report an error if \s-1DT_TEXTREL\s0 is set, i.e., if the binary has dynamic
-relocations in read-only sections.  Don't report an error if
-\&\fBnotext\fR or \fBtextoff\fR.
+Report an error if \s-1DT_TEXTREL\s0 is set, i.e., if the position-independent
+or shared object has dynamic relocations in read-only sections.  Don't
+report an error if \fBnotext\fR or \fBtextoff\fR.
 .IP "\fBundefs\fR" 4
 .IX Item "undefs"
 Do not report unresolved symbol references from regular object files,
@@ -1583,7 +1658,10 @@ Print a summary of all target-specific options on the standard output and exit.
 .IP "\fB\-Map=\fR\fImapfile\fR" 4
 .IX Item "-Map=mapfile"
 Print a link map to the file \fImapfile\fR.  See the description of the
-\&\fB\-M\fR option, above.
+\&\fB\-M\fR option, above.  Specifying a directory as \fImapfile\fR
+causes the linker map to be written into a file inside the directory.
+The name of the file is based upon the \fIoutput\fR filename with
+\&\f(CW\*(C`.map\*(C'\fR appended.
 .IP "\fB\-\-no\-keep\-memory\fR" 4
 .IX Item "--no-keep-memory"
 \&\fBld\fR normally optimizes for speed over memory usage by caching the
@@ -1857,8 +1935,18 @@ libraries needed by it. The \f(CW\*(C`DT_RPATH\*(C'\fR entries are ignored if
 .IP "7." 4
 The default directories, normally \fI/lib\fR and \fI/usr/lib\fR.
 .IP "8." 4
-For a native linker on an \s-1ELF\s0 system, if the file \fI/etc/ld.so.conf\fR
-exists, the list of directories found in that file.
+For a linker for a Linux system, if the file \fI/etc/ld.so.conf\fR
+exists, the list of directories found in that file.  Note: the path
+to this file is prefixed with the \f(CW\*(C`sysroot\*(C'\fR value, if that is
+defined, and then any \f(CW\*(C`prefix\*(C'\fR string if the linker was
+configured with the \fB\-\-prefix=<path>\fR option.
+.IP "9." 4
+For a native linker on a FreeBSD system, any directories specified by
+the \f(CW\*(C`_PATH_ELF_HINTS\*(C'\fR macro defined in the \fIelf\-hints.h\fR
+header file.
+.IP "10." 4
+Any directories specifed by a \f(CW\*(C`SEARCH_DIR\*(C'\fR command in the
+linker script being used.
 .RE
 .RS 4
 .Sp
@@ -2142,9 +2230,10 @@ alignment.  Typically, the alignment will be set by an input section.
 The address will only be changed if it not explicitly specified; that
 is, if the \f(CW\*(C`SECTIONS\*(C'\fR command does not specify a start address for
 the section.
-.IP "\fB\-\-warn\-shared\-textrel\fR" 4
-.IX Item "--warn-shared-textrel"
-Warn if the linker adds a \s-1DT_TEXTREL\s0 to a shared object.
+.IP "\fB\-\-warn\-textrel\fR" 4
+.IX Item "--warn-textrel"
+Warn if the linker adds \s-1DT_TEXTREL\s0 to a position-independent executable
+or shared object.
 .IP "\fB\-\-warn\-alternate\-em\fR" 4
 .IX Item "--warn-alternate-em"
 Warn if an object has alternate \s-1ELF\s0 machine code.
@@ -2892,11 +2981,63 @@ an error.
 .IP "\fB\-\-compact\-branches\fR" 4
 .IX Item "--compact-branches"
 .PD 0
-.IP "\fB\-\-compact\-branches\fR" 4
-.IX Item "--compact-branches"
+.IP "\fB\-\-no\-compact\-branches\fR" 4
+.IX Item "--no-compact-branches"
 .PD
 These options control the generation of compact instructions by the linker
 in the \s-1PLT\s0 entries for \s-1MIPS R6.\s0
+.PP
+For the pdp11\-aout target, three variants of the output format can be
+produced as selected by the following options.  The default variant
+for pdp11\-aout is the \fB\-\-omagic\fR option, whereas for other
+targets \fB\-\-nmagic\fR is the default.  The \fB\-\-imagic\fR option is
+defined only for the pdp11\-aout target, while the others are described
+here as they apply to the pdp11\-aout target.
+.IP "\fB\-N\fR" 4
+.IX Item "-N"
+.PD 0
+.IP "\fB\-\-omagic\fR" 4
+.IX Item "--omagic"
+.PD
+Mark the output as \f(CW\*(C`OMAGIC\*(C'\fR (0407) in the \fIa.out\fR header to
+indicate that the text segment is not to be write-protected and
+shared.  Since the text and data sections are both readable and
+writable, the data section is allocated immediately contiguous after
+the text segment.  This is the oldest format for \s-1PDP11\s0 executable
+programs and is the default for \fBld\fR on \s-1PDP11\s0 Unix systems
+from the beginning through 2.11BSD.
+.IP "\fB\-n\fR" 4
+.IX Item "-n"
+.PD 0
+.IP "\fB\-\-nmagic\fR" 4
+.IX Item "--nmagic"
+.PD
+Mark the output as \f(CW\*(C`NMAGIC\*(C'\fR (0410) in the \fIa.out\fR header to
+indicate that when the output file is executed, the text portion will
+be read-only and shareable among all processes executing the same
+file.  This involves moving the data areas up to the first possible 8K
+byte page boundary following the end of the text.  This option creates
+a \fIpure executable\fR format.
+.IP "\fB\-z\fR" 4
+.IX Item "-z"
+.PD 0
+.IP "\fB\-\-imagic\fR" 4
+.IX Item "--imagic"
+.PD
+Mark the output as \f(CW\*(C`IMAGIC\*(C'\fR (0411) in the \fIa.out\fR header to
+indicate that when the output file is executed, the program text and
+data areas will be loaded into separate address spaces using the split
+instruction and data space feature of the memory management unit in
+larger models of the \s-1PDP11.\s0  This doubles the address space available
+to the program.  The text segment is again pure, write-protected, and
+shareable.  The only difference in the output format between this
+option and the others, besides the magic number, is that both the text
+and data sections start at location 0.  The \fB\-z\fR option selected
+this format in 2.11BSD.  This option creates a \fIseparate
+executable\fR format.
+.IP "\fB\-\-no\-omagic\fR" 4
+.IX Item "--no-omagic"
+Equivalent to \fB\-\-nmagic\fR for pdp11\-aout.
 .SH "ENVIRONMENT"
 .IX Header "ENVIRONMENT"
 You can change the behaviour of \fBld\fR with the environment variables

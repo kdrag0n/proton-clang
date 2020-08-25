@@ -64,6 +64,16 @@ set_target_properties(LLVMFuzzMutate PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS LLVMFuzzMutate )
 list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMFuzzMutate "${_IMPORT_PREFIX}/lib/libLLVMFuzzMutate.a" )
 
+# Import target "LLVMInterfaceStub" for configuration "Release"
+set_property(TARGET LLVMInterfaceStub APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(LLVMInterfaceStub PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libLLVMInterfaceStub.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS LLVMInterfaceStub )
+list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMInterfaceStub "${_IMPORT_PREFIX}/lib/libLLVMInterfaceStub.a" )
+
 # Import target "LLVMIRReader" for configuration "Release"
 set_property(TARGET LLVMIRReader APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(LLVMIRReader PROPERTIES
