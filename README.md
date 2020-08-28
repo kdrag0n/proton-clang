@@ -76,3 +76,7 @@ In downstream kernels, the cause is usually big.LITTLE CPU optimization flags th
 This is caused by unconditional invocations of `gcc-version.sh` in CAF's camera_v2 driver. The recommended solution is to cherry-pick [Google's fix](https://android.googlesource.com/kernel/msm/+/9b3a54e388fae0fcc5ea64a4c612936baae44fce) from the Pixel 2 kernel, which simply removes the faulty invocations as they were never useful to begin with.
 
 Note that these errors are harmless and don't necessarily need to be fixed, but nonetheless, ignoring them is not recommended.
+
+### `undefined reference to 'stpcpy'`
+
+This is caused by a libcall optimization added in Clang 12 that optimizes certain basic `sprintf` calls into `stpcpy` calls. The correct fix for this is to cherry-pick ["lib/string.c: implement stpcpy"](https://github.com/kdrag0n/proton_zf6/commit/cec73f0775526), which adds a simple implementation of `stpcpy` to the kernel so that Clang can use it.
