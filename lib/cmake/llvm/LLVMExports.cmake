@@ -179,7 +179,7 @@ set_target_properties(LLVMDWARFLinker PROPERTIES
 add_library(LLVMExtensions STATIC IMPORTED)
 
 set_target_properties(LLVMExtensions PROPERTIES
-  INTERFACE_LINK_LIBRARIES "Polly"
+  INTERFACE_LINK_LIBRARIES "LLVMSupport;Polly"
 )
 
 # Create imported target LLVMFrontendOpenACC

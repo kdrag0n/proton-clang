@@ -285,6 +285,36 @@ set_target_properties(clangIndexSerialization PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS clangIndexSerialization )
 list(APPEND _IMPORT_CHECK_FILES_FOR_clangIndexSerialization "${_IMPORT_PREFIX}/lib/libclangIndexSerialization.a" )
 
+# Import target "clangStaticAnalyzerCore" for configuration "Release"
+set_property(TARGET clangStaticAnalyzerCore APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(clangStaticAnalyzerCore PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libclangStaticAnalyzerCore.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS clangStaticAnalyzerCore )
+list(APPEND _IMPORT_CHECK_FILES_FOR_clangStaticAnalyzerCore "${_IMPORT_PREFIX}/lib/libclangStaticAnalyzerCore.a" )
+
+# Import target "clangStaticAnalyzerCheckers" for configuration "Release"
+set_property(TARGET clangStaticAnalyzerCheckers APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(clangStaticAnalyzerCheckers PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libclangStaticAnalyzerCheckers.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS clangStaticAnalyzerCheckers )
+list(APPEND _IMPORT_CHECK_FILES_FOR_clangStaticAnalyzerCheckers "${_IMPORT_PREFIX}/lib/libclangStaticAnalyzerCheckers.a" )
+
+# Import target "clangStaticAnalyzerFrontend" for configuration "Release"
+set_property(TARGET clangStaticAnalyzerFrontend APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(clangStaticAnalyzerFrontend PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libclangStaticAnalyzerFrontend.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS clangStaticAnalyzerFrontend )
+list(APPEND _IMPORT_CHECK_FILES_FOR_clangStaticAnalyzerFrontend "${_IMPORT_PREFIX}/lib/libclangStaticAnalyzerFrontend.a" )
+
 # Import target "clangFormat" for configuration "Release"
 set_property(TARGET clangFormat APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(clangFormat PROPERTIES
