@@ -3368,6 +3368,18 @@ vec_dive(vector unsigned long long __a, vector unsigned long long __b) {
 }
 #endif
 
+#ifdef __POWER10_VECTOR__
+static __inline__ vector unsigned __int128 __ATTRS_o_ai
+vec_div(vector unsigned __int128 __a, vector unsigned __int128 __b) {
+  return __a / __b;
+}
+
+static __inline__ vector signed __int128 __ATTRS_o_ai
+vec_div(vector signed __int128 __a, vector signed __int128 __b) {
+  return __a / __b;
+}
+#endif __POWER10_VECTOR__
+
 /* vec_dss */
 
 #define vec_dss __builtin_altivec_dss
@@ -17066,6 +17078,45 @@ vec_expandm(vector unsigned long long __a) {
 static __inline__ vector unsigned __int128 __ATTRS_o_ai
 vec_expandm(vector unsigned __int128 __a) {
   return __builtin_altivec_vexpandqm(__a);
+}
+
+/* vec_cntm */
+
+#define vec_cntm(__a, __mp)                                                    \
+  _Generic((__a), vector unsigned char                                         \
+           : __builtin_altivec_vcntmbb((__a), (unsigned int)(__mp)),           \
+             vector unsigned short                                             \
+           : __builtin_altivec_vcntmbh((__a), (unsigned int)(__mp)),           \
+             vector unsigned int                                               \
+           : __builtin_altivec_vcntmbw((__a), (unsigned int)(__mp)),           \
+             vector unsigned long long                                         \
+           : __builtin_altivec_vcntmbd((__a), (unsigned int)(__mp)))
+
+/* vec_gen[b|h|w|d|q]m */
+
+static __inline__ vector unsigned char __ATTRS_o_ai
+vec_genbm(unsigned long long __bm) {
+  return __builtin_altivec_mtvsrbm(__bm);
+}
+
+static __inline__ vector unsigned short __ATTRS_o_ai
+vec_genhm(unsigned long long __bm) {
+  return __builtin_altivec_mtvsrhm(__bm);
+}
+
+static __inline__ vector unsigned int __ATTRS_o_ai
+vec_genwm(unsigned long long __bm) {
+  return __builtin_altivec_mtvsrwm(__bm);
+}
+
+static __inline__ vector unsigned long long __ATTRS_o_ai
+vec_gendm(unsigned long long __bm) {
+  return __builtin_altivec_mtvsrdm(__bm);
+}
+
+static __inline__ vector unsigned __int128 __ATTRS_o_ai
+vec_genqm(unsigned long long __bm) {
+  return __builtin_altivec_mtvsrqm(__bm);
 }
 
 /* vec_pdep */
