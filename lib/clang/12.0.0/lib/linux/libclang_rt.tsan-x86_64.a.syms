@@ -353,6 +353,8 @@
   __interceptor_pthread_timedjoin_np;
   __interceptor_pthread_tryjoin_np;
   __interceptor_ptrace;
+  __interceptor_ptsname;
+  __interceptor_ptsname_r;
   __interceptor_puts;
   __interceptor_pututxline;
   __interceptor_pvalloc;
@@ -1612,6 +1614,8 @@
   pthread_timedjoin_np;
   pthread_tryjoin_np;
   ptrace;
+  ptsname;
+  ptsname_r;
   puts;
   pututxline;
   pvalloc;

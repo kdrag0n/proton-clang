@@ -290,6 +290,8 @@
   __interceptor_pthread_setname_np;
   __interceptor_pthread_sigmask;
   __interceptor_ptrace;
+  __interceptor_ptsname;
+  __interceptor_ptsname_r;
   __interceptor_puts;
   __interceptor_pututxline;
   __interceptor_pvalloc;
@@ -1468,6 +1470,8 @@
   pthread_setname_np;
   pthread_sigmask;
   ptrace;
+  ptsname;
+  ptsname_r;
   puts;
   pututxline;
   pvalloc;
