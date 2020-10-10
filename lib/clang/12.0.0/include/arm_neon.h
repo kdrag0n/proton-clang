@@ -57549,22 +57549,22 @@ __ai int16_t vqrdmulhh_s16(int16_t __p0, int16_t __p1) {
 })
 #endif
 
-__ai uint8_t vqrshlb_u8(uint8_t __p0, uint8_t __p1) {
+__ai uint8_t vqrshlb_u8(uint8_t __p0, int8_t __p1) {
   uint8_t __ret;
   __ret = (uint8_t) __builtin_neon_vqrshlb_u8(__p0, __p1);
   return __ret;
 }
-__ai uint32_t vqrshls_u32(uint32_t __p0, uint32_t __p1) {
+__ai uint32_t vqrshls_u32(uint32_t __p0, int32_t __p1) {
   uint32_t __ret;
   __ret = (uint32_t) __builtin_neon_vqrshls_u32(__p0, __p1);
   return __ret;
 }
-__ai uint64_t vqrshld_u64(uint64_t __p0, uint64_t __p1) {
+__ai uint64_t vqrshld_u64(uint64_t __p0, int64_t __p1) {
   uint64_t __ret;
   __ret = (uint64_t) __builtin_neon_vqrshld_u64(__p0, __p1);
   return __ret;
 }
-__ai uint16_t vqrshlh_u16(uint16_t __p0, uint16_t __p1) {
+__ai uint16_t vqrshlh_u16(uint16_t __p0, int16_t __p1) {
   uint16_t __ret;
   __ret = (uint16_t) __builtin_neon_vqrshlh_u16(__p0, __p1);
   return __ret;
@@ -57832,22 +57832,22 @@ __ai int16_t vqrshlh_s16(int16_t __p0, int16_t __p1) {
   __ret = (int8_t) __builtin_neon_vqrshrunh_n_s16(__s0, __p1); \
   __ret; \
 })
-__ai uint8_t vqshlb_u8(uint8_t __p0, uint8_t __p1) {
+__ai uint8_t vqshlb_u8(uint8_t __p0, int8_t __p1) {
   uint8_t __ret;
   __ret = (uint8_t) __builtin_neon_vqshlb_u8(__p0, __p1);
   return __ret;
 }
-__ai uint32_t vqshls_u32(uint32_t __p0, uint32_t __p1) {
+__ai uint32_t vqshls_u32(uint32_t __p0, int32_t __p1) {
   uint32_t __ret;
   __ret = (uint32_t) __builtin_neon_vqshls_u32(__p0, __p1);
   return __ret;
 }
-__ai uint64_t vqshld_u64(uint64_t __p0, uint64_t __p1) {
+__ai uint64_t vqshld_u64(uint64_t __p0, int64_t __p1) {
   uint64_t __ret;
   __ret = (uint64_t) __builtin_neon_vqshld_u64(__p0, __p1);
   return __ret;
 }
-__ai uint16_t vqshlh_u16(uint16_t __p0, uint16_t __p1) {
+__ai uint16_t vqshlh_u16(uint16_t __p0, int16_t __p1) {
   uint16_t __ret;
   __ret = (uint16_t) __builtin_neon_vqshlh_u16(__p0, __p1);
   return __ret;
@@ -59452,7 +59452,7 @@ __ai float32_t vrecpxs_f32(float32_t __p0) {
   __ret = (float32_t) __builtin_neon_vrecpxs_f32(__p0);
   return __ret;
 }
-__ai uint64_t vrshld_u64(uint64_t __p0, uint64_t __p1) {
+__ai uint64_t vrshld_u64(uint64_t __p0, int64_t __p1) {
   uint64_t __ret;
   __ret = (uint64_t) __builtin_neon_vrshld_u64(__p0, __p1);
   return __ret;
@@ -59853,7 +59853,7 @@ __ai int8x16_t vrsubhn_high_s16(int8x8_t __p0, int16x8_t __p1, int16x8_t __p2) {
   __ret = (float64x1_t) __builtin_neon_vset_lane_f64(__s0, (float64x1_t)__s1, __p2); \
   __ret; \
 })
-__ai uint64_t vshld_u64(uint64_t __p0, uint64_t __p1) {
+__ai uint64_t vshld_u64(uint64_t __p0, int64_t __p1) {
   uint64_t __ret;
   __ret = (uint64_t) __builtin_neon_vshld_u64(__p0, __p1);
   return __ret;
