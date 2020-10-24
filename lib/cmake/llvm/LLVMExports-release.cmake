@@ -1352,15 +1352,6 @@ set_target_properties(llvm-xray PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS llvm-xray )
 list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-xray "${_IMPORT_PREFIX}/bin/llvm-xray" )
 
-# Import target "obj2yaml" for configuration "Release"
-set_property(TARGET obj2yaml APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(obj2yaml PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/obj2yaml"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS obj2yaml )
-list(APPEND _IMPORT_CHECK_FILES_FOR_obj2yaml "${_IMPORT_PREFIX}/bin/obj2yaml" )
-
 # Import target "opt" for configuration "Release"
 set_property(TARGET opt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(opt PROPERTIES
@@ -1415,15 +1406,6 @@ set_target_properties(verify-uselistorder PROPERTIES
 
 list(APPEND _IMPORT_CHECK_TARGETS verify-uselistorder )
 list(APPEND _IMPORT_CHECK_FILES_FOR_verify-uselistorder "${_IMPORT_PREFIX}/bin/verify-uselistorder" )
-
-# Import target "yaml2obj" for configuration "Release"
-set_property(TARGET yaml2obj APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(yaml2obj PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/yaml2obj"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS yaml2obj )
-list(APPEND _IMPORT_CHECK_FILES_FOR_yaml2obj "${_IMPORT_PREFIX}/bin/yaml2obj" )
 
 # Import target "PollyISL" for configuration "Release"
 set_property(TARGET PollyISL APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
