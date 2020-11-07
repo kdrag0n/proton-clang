@@ -15,6 +15,16 @@ set_target_properties(clangBasic PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS clangBasic )
 list(APPEND _IMPORT_CHECK_FILES_FOR_clangBasic "${_IMPORT_PREFIX}/lib/libclangBasic.a" )
 
+# Import target "clangAPINotes" for configuration "Release"
+set_property(TARGET clangAPINotes APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(clangAPINotes PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libclangAPINotes.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS clangAPINotes )
+list(APPEND _IMPORT_CHECK_FILES_FOR_clangAPINotes "${_IMPORT_PREFIX}/lib/libclangAPINotes.a" )
+
 # Import target "clangLex" for configuration "Release"
 set_property(TARGET clangLex APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(clangLex PROPERTIES
