@@ -1263,6 +1263,15 @@ set_target_properties(llvm-pdbutil PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS llvm-pdbutil )
 list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-pdbutil "${_IMPORT_PREFIX}/bin/llvm-pdbutil" )
 
+# Import target "llvm-profgen" for configuration "Release"
+set_property(TARGET llvm-profgen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(llvm-profgen PROPERTIES
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/llvm-profgen"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS llvm-profgen )
+list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-profgen "${_IMPORT_PREFIX}/bin/llvm-profgen" )
+
 # Import target "llvm-rc" for configuration "Release"
 set_property(TARGET llvm-rc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(llvm-rc PROPERTIES

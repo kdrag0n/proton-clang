@@ -635,6 +635,7 @@
   __sanitizer_get_heap_size;
   __sanitizer_get_module_and_offset_for_pc;
   __sanitizer_get_ownership;
+  __sanitizer_get_report_path;
   __sanitizer_get_unmapped_bytes;
   __sanitizer_install_malloc_and_free_hooks;
   __sanitizer_on_print;

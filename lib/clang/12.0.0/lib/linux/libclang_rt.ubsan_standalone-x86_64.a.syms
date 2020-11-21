@@ -26,6 +26,7 @@
   __sanitizer_dump_coverage;
   __sanitizer_dump_trace_pc_guard_coverage;
   __sanitizer_get_module_and_offset_for_pc;
+  __sanitizer_get_report_path;
   __sanitizer_install_malloc_and_free_hooks;
   __sanitizer_on_print;
   __sanitizer_print_stack_trace;

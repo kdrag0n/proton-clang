@@ -303,6 +303,7 @@
   __interceptor_pthread_barrier_wait;
   __interceptor_pthread_barrierattr_getpshared;
   __interceptor_pthread_cond_broadcast;
+  __interceptor_pthread_cond_clockwait;
   __interceptor_pthread_cond_destroy;
   __interceptor_pthread_cond_init;
   __interceptor_pthread_cond_signal;
@@ -606,6 +607,7 @@
   __sanitizer_get_heap_size;
   __sanitizer_get_module_and_offset_for_pc;
   __sanitizer_get_ownership;
+  __sanitizer_get_report_path;
   __sanitizer_get_unmapped_bytes;
   __sanitizer_install_malloc_and_free_hooks;
   __sanitizer_malloc_hook;
@@ -1569,6 +1571,7 @@
   pthread_barrier_init;
   pthread_barrier_wait;
   pthread_barrierattr_getpshared;
+  pthread_cond_clockwait;
   pthread_condattr_getclock;
   pthread_condattr_getpshared;
   pthread_create;
