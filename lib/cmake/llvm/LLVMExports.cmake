@@ -95,7 +95,7 @@ set_target_properties(LLVMFileCheck PROPERTIES
 add_library(LLVMInterfaceStub STATIC IMPORTED)
 
 set_target_properties(LLVMInterfaceStub PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMObject;LLVMSupport"
+  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMObject;LLVMSupport"
 )
 
 # Create imported target LLVMIRReader
