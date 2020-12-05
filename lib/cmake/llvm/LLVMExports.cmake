@@ -277,7 +277,7 @@ set_target_properties(LLVMCFGuard PROPERTIES
 add_library(LLVMLinker STATIC IMPORTED)
 
 set_target_properties(LLVMLinker PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMCore;LLVMSupport;LLVMTransformUtils"
+  INTERFACE_LINK_LIBRARIES "LLVMCore;LLVMObject;LLVMSupport;LLVMTransformUtils"
 )
 
 # Create imported target LLVMAnalysis
