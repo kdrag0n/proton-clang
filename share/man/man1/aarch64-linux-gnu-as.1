@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "AS 1"
-.TH AS 1 "2020-07-24" "binutils-2.35" "GNU Development Tools"
+.TH AS 1 "2020-09-19" "binutils-2.35.1" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -629,7 +629,9 @@ compiler output).
 .PD
 Generate debugging information for each assembler source line using whichever
 debug format is preferred by the target.  This currently means either \s-1STABS,
-ECOFF\s0 or \s-1DWARF2.\s0
+ECOFF\s0 or \s-1DWARF2.\s0  When the debug format is \s-1DWARF\s0 then a \f(CW\*(C`.debug_info\*(C'\fR and
+\&\f(CW\*(C`.debug_line\*(C'\fR section is only emitted when the assembly file doesn't
+generate one itself.
 .IP "\fB\-\-gstabs\fR" 4
 .IX Item "--gstabs"
 Generate stabs debugging information for each assembler line.  This
