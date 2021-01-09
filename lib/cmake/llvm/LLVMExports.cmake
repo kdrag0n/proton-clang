@@ -172,7 +172,7 @@ set_target_properties(LLVMBitstreamReader PROPERTIES
 add_library(LLVMDWARFLinker STATIC IMPORTED)
 
 set_target_properties(LLVMDWARFLinker PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMDebugInfoDWARF;LLVMAsmPrinter;LLVMCodeGen;LLVMMC;LLVMObject;LLVMSupport"
+  INTERFACE_LINK_LIBRARIES "LLVMBinaryFormat;LLVMDebugInfoDWARF;LLVMAsmPrinter;LLVMCodeGen;LLVMMC;LLVMObject;LLVMSupport"
 )
 
 # Create imported target LLVMExtensions
