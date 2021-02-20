@@ -132,7 +132,7 @@ enum svprfop
 };
 
 /* Function attributes */
-#define __aio static inline __attribute__((__always_inline__, __nodebug__, __overloadable__))
+#define __aio static __inline__ __attribute__((__always_inline__, __nodebug__, __overloadable__))
 
 #define svreinterpret_s8_s8(...) __builtin_sve_reinterpret_s8_s8(__VA_ARGS__)
 #define svreinterpret_s8_s16(...) __builtin_sve_reinterpret_s8_s16(__VA_ARGS__)
