@@ -34957,6 +34957,311 @@ __ai uint8x16_t vaesmcq_u8(uint8x16_t __p0) {
 #endif
 
 #ifdef __LITTLE_ENDIAN__
+__ai uint8x16_t vbcaxq_u8(uint8x16_t __p0, uint8x16_t __p1, uint8x16_t __p2) {
+  uint8x16_t __ret;
+  __ret = (uint8x16_t) __builtin_neon_vbcaxq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 48);
+  return __ret;
+}
+#else
+__ai uint8x16_t vbcaxq_u8(uint8x16_t __p0, uint8x16_t __p1, uint8x16_t __p2) {
+  uint8x16_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint8x16_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint8x16_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint8x16_t __ret;
+  __ret = (uint8x16_t) __builtin_neon_vbcaxq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 48);
+  __ret = __builtin_shufflevector(__ret, __ret, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint32x4_t vbcaxq_u32(uint32x4_t __p0, uint32x4_t __p1, uint32x4_t __p2) {
+  uint32x4_t __ret;
+  __ret = (uint32x4_t) __builtin_neon_vbcaxq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 50);
+  return __ret;
+}
+#else
+__ai uint32x4_t vbcaxq_u32(uint32x4_t __p0, uint32x4_t __p1, uint32x4_t __p2) {
+  uint32x4_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 3, 2, 1, 0);
+  uint32x4_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 3, 2, 1, 0);
+  uint32x4_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 3, 2, 1, 0);
+  uint32x4_t __ret;
+  __ret = (uint32x4_t) __builtin_neon_vbcaxq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 50);
+  __ret = __builtin_shufflevector(__ret, __ret, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint64x2_t vbcaxq_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vbcaxq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 51);
+  return __ret;
+}
+#else
+__ai uint64x2_t vbcaxq_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  uint64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  uint64x2_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 1, 0);
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vbcaxq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 51);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint16x8_t vbcaxq_u16(uint16x8_t __p0, uint16x8_t __p1, uint16x8_t __p2) {
+  uint16x8_t __ret;
+  __ret = (uint16x8_t) __builtin_neon_vbcaxq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 49);
+  return __ret;
+}
+#else
+__ai uint16x8_t vbcaxq_u16(uint16x8_t __p0, uint16x8_t __p1, uint16x8_t __p2) {
+  uint16x8_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint16x8_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint16x8_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint16x8_t __ret;
+  __ret = (uint16x8_t) __builtin_neon_vbcaxq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 49);
+  __ret = __builtin_shufflevector(__ret, __ret, 7, 6, 5, 4, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai int8x16_t vbcaxq_s8(int8x16_t __p0, int8x16_t __p1, int8x16_t __p2) {
+  int8x16_t __ret;
+  __ret = (int8x16_t) __builtin_neon_vbcaxq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 32);
+  return __ret;
+}
+#else
+__ai int8x16_t vbcaxq_s8(int8x16_t __p0, int8x16_t __p1, int8x16_t __p2) {
+  int8x16_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  int8x16_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  int8x16_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  int8x16_t __ret;
+  __ret = (int8x16_t) __builtin_neon_vbcaxq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 32);
+  __ret = __builtin_shufflevector(__ret, __ret, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai int32x4_t vbcaxq_s32(int32x4_t __p0, int32x4_t __p1, int32x4_t __p2) {
+  int32x4_t __ret;
+  __ret = (int32x4_t) __builtin_neon_vbcaxq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 34);
+  return __ret;
+}
+#else
+__ai int32x4_t vbcaxq_s32(int32x4_t __p0, int32x4_t __p1, int32x4_t __p2) {
+  int32x4_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 3, 2, 1, 0);
+  int32x4_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 3, 2, 1, 0);
+  int32x4_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 3, 2, 1, 0);
+  int32x4_t __ret;
+  __ret = (int32x4_t) __builtin_neon_vbcaxq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 34);
+  __ret = __builtin_shufflevector(__ret, __ret, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai int64x2_t vbcaxq_s64(int64x2_t __p0, int64x2_t __p1, int64x2_t __p2) {
+  int64x2_t __ret;
+  __ret = (int64x2_t) __builtin_neon_vbcaxq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 35);
+  return __ret;
+}
+#else
+__ai int64x2_t vbcaxq_s64(int64x2_t __p0, int64x2_t __p1, int64x2_t __p2) {
+  int64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  int64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  int64x2_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 1, 0);
+  int64x2_t __ret;
+  __ret = (int64x2_t) __builtin_neon_vbcaxq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 35);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai int16x8_t vbcaxq_s16(int16x8_t __p0, int16x8_t __p1, int16x8_t __p2) {
+  int16x8_t __ret;
+  __ret = (int16x8_t) __builtin_neon_vbcaxq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 33);
+  return __ret;
+}
+#else
+__ai int16x8_t vbcaxq_s16(int16x8_t __p0, int16x8_t __p1, int16x8_t __p2) {
+  int16x8_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 7, 6, 5, 4, 3, 2, 1, 0);
+  int16x8_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 7, 6, 5, 4, 3, 2, 1, 0);
+  int16x8_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 7, 6, 5, 4, 3, 2, 1, 0);
+  int16x8_t __ret;
+  __ret = (int16x8_t) __builtin_neon_vbcaxq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 33);
+  __ret = __builtin_shufflevector(__ret, __ret, 7, 6, 5, 4, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint8x16_t veor3q_u8(uint8x16_t __p0, uint8x16_t __p1, uint8x16_t __p2) {
+  uint8x16_t __ret;
+  __ret = (uint8x16_t) __builtin_neon_veor3q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 48);
+  return __ret;
+}
+#else
+__ai uint8x16_t veor3q_u8(uint8x16_t __p0, uint8x16_t __p1, uint8x16_t __p2) {
+  uint8x16_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint8x16_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint8x16_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint8x16_t __ret;
+  __ret = (uint8x16_t) __builtin_neon_veor3q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 48);
+  __ret = __builtin_shufflevector(__ret, __ret, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint32x4_t veor3q_u32(uint32x4_t __p0, uint32x4_t __p1, uint32x4_t __p2) {
+  uint32x4_t __ret;
+  __ret = (uint32x4_t) __builtin_neon_veor3q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 50);
+  return __ret;
+}
+#else
+__ai uint32x4_t veor3q_u32(uint32x4_t __p0, uint32x4_t __p1, uint32x4_t __p2) {
+  uint32x4_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 3, 2, 1, 0);
+  uint32x4_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 3, 2, 1, 0);
+  uint32x4_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 3, 2, 1, 0);
+  uint32x4_t __ret;
+  __ret = (uint32x4_t) __builtin_neon_veor3q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 50);
+  __ret = __builtin_shufflevector(__ret, __ret, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint64x2_t veor3q_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_veor3q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 51);
+  return __ret;
+}
+#else
+__ai uint64x2_t veor3q_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  uint64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  uint64x2_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 1, 0);
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_veor3q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 51);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint16x8_t veor3q_u16(uint16x8_t __p0, uint16x8_t __p1, uint16x8_t __p2) {
+  uint16x8_t __ret;
+  __ret = (uint16x8_t) __builtin_neon_veor3q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 49);
+  return __ret;
+}
+#else
+__ai uint16x8_t veor3q_u16(uint16x8_t __p0, uint16x8_t __p1, uint16x8_t __p2) {
+  uint16x8_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint16x8_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint16x8_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 7, 6, 5, 4, 3, 2, 1, 0);
+  uint16x8_t __ret;
+  __ret = (uint16x8_t) __builtin_neon_veor3q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 49);
+  __ret = __builtin_shufflevector(__ret, __ret, 7, 6, 5, 4, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai int8x16_t veor3q_s8(int8x16_t __p0, int8x16_t __p1, int8x16_t __p2) {
+  int8x16_t __ret;
+  __ret = (int8x16_t) __builtin_neon_veor3q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 32);
+  return __ret;
+}
+#else
+__ai int8x16_t veor3q_s8(int8x16_t __p0, int8x16_t __p1, int8x16_t __p2) {
+  int8x16_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  int8x16_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  int8x16_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  int8x16_t __ret;
+  __ret = (int8x16_t) __builtin_neon_veor3q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 32);
+  __ret = __builtin_shufflevector(__ret, __ret, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai int32x4_t veor3q_s32(int32x4_t __p0, int32x4_t __p1, int32x4_t __p2) {
+  int32x4_t __ret;
+  __ret = (int32x4_t) __builtin_neon_veor3q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 34);
+  return __ret;
+}
+#else
+__ai int32x4_t veor3q_s32(int32x4_t __p0, int32x4_t __p1, int32x4_t __p2) {
+  int32x4_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 3, 2, 1, 0);
+  int32x4_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 3, 2, 1, 0);
+  int32x4_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 3, 2, 1, 0);
+  int32x4_t __ret;
+  __ret = (int32x4_t) __builtin_neon_veor3q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 34);
+  __ret = __builtin_shufflevector(__ret, __ret, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai int64x2_t veor3q_s64(int64x2_t __p0, int64x2_t __p1, int64x2_t __p2) {
+  int64x2_t __ret;
+  __ret = (int64x2_t) __builtin_neon_veor3q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 35);
+  return __ret;
+}
+#else
+__ai int64x2_t veor3q_s64(int64x2_t __p0, int64x2_t __p1, int64x2_t __p2) {
+  int64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  int64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  int64x2_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 1, 0);
+  int64x2_t __ret;
+  __ret = (int64x2_t) __builtin_neon_veor3q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 35);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai int16x8_t veor3q_s16(int16x8_t __p0, int16x8_t __p1, int16x8_t __p2) {
+  int16x8_t __ret;
+  __ret = (int16x8_t) __builtin_neon_veor3q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 33);
+  return __ret;
+}
+#else
+__ai int16x8_t veor3q_s16(int16x8_t __p0, int16x8_t __p1, int16x8_t __p2) {
+  int16x8_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 7, 6, 5, 4, 3, 2, 1, 0);
+  int16x8_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 7, 6, 5, 4, 3, 2, 1, 0);
+  int16x8_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 7, 6, 5, 4, 3, 2, 1, 0);
+  int16x8_t __ret;
+  __ret = (int16x8_t) __builtin_neon_veor3q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 33);
+  __ret = __builtin_shufflevector(__ret, __ret, 7, 6, 5, 4, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint64x2_t vrax1q_u64(uint64x2_t __p0, uint64x2_t __p1) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vrax1q_v((int8x16_t)__p0, (int8x16_t)__p1, 51);
+  return __ret;
+}
+#else
+__ai uint64x2_t vrax1q_u64(uint64x2_t __p0, uint64x2_t __p1) {
+  uint64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  uint64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vrax1q_v((int8x16_t)__rev0, (int8x16_t)__rev1, 51);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
 __ai uint32x4_t vsha1cq_u32(uint32x4_t __p0, uint32_t __p1, uint32x4_t __p2) {
   uint32x4_t __ret;
   __ret = (uint32x4_t) __builtin_neon_vsha1cq_u32(__p0, __p1, __p2);
@@ -35114,6 +35419,77 @@ __ai uint32x4_t vsha256su1q_u32(uint32x4_t __p0, uint32x4_t __p1, uint32x4_t __p
   uint32x4_t __ret;
   __ret = (uint32x4_t) __builtin_neon_vsha256su1q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 50);
   __ret = __builtin_shufflevector(__ret, __ret, 3, 2, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint64x2_t vsha512hq_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vsha512hq_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 51);
+  return __ret;
+}
+#else
+__ai uint64x2_t vsha512hq_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  uint64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  uint64x2_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 1, 0);
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vsha512hq_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 51);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint64x2_t vsha512h2q_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vsha512h2q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 51);
+  return __ret;
+}
+#else
+__ai uint64x2_t vsha512h2q_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  uint64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  uint64x2_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 1, 0);
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vsha512h2q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 51);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint64x2_t vsha512su0q_u64(uint64x2_t __p0, uint64x2_t __p1) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vsha512su0q_v((int8x16_t)__p0, (int8x16_t)__p1, 51);
+  return __ret;
+}
+#else
+__ai uint64x2_t vsha512su0q_u64(uint64x2_t __p0, uint64x2_t __p1) {
+  uint64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  uint64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vsha512su0q_v((int8x16_t)__rev0, (int8x16_t)__rev1, 51);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
+  return __ret;
+}
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+__ai uint64x2_t vsha512su1q_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vsha512su1q_v((int8x16_t)__p0, (int8x16_t)__p1, (int8x16_t)__p2, 51);
+  return __ret;
+}
+#else
+__ai uint64x2_t vsha512su1q_u64(uint64x2_t __p0, uint64x2_t __p1, uint64x2_t __p2) {
+  uint64x2_t __rev0;  __rev0 = __builtin_shufflevector(__p0, __p0, 1, 0);
+  uint64x2_t __rev1;  __rev1 = __builtin_shufflevector(__p1, __p1, 1, 0);
+  uint64x2_t __rev2;  __rev2 = __builtin_shufflevector(__p2, __p2, 1, 0);
+  uint64x2_t __ret;
+  __ret = (uint64x2_t) __builtin_neon_vsha512su1q_v((int8x16_t)__rev0, (int8x16_t)__rev1, (int8x16_t)__rev2, 51);
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0);
   return __ret;
 }
 #endif
@@ -35300,6 +35676,27 @@ __ai uint32x4_t vsm4ekeyq_u32(uint32x4_t __p0, uint32x4_t __p1) {
   __ret = __builtin_shufflevector(__ret, __ret, 3, 2, 1, 0);
   return __ret;
 }
+#endif
+
+#ifdef __LITTLE_ENDIAN__
+#define vxarq_u64(__p0, __p1, __p2) __extension__ ({ \
+  uint64x2_t __s0 = __p0; \
+  uint64x2_t __s1 = __p1; \
+  uint64x2_t __ret; \
+  __ret = (uint64x2_t) __builtin_neon_vxarq_v((int8x16_t)__s0, (int8x16_t)__s1, __p2, 51); \
+  __ret; \
+})
+#else
+#define vxarq_u64(__p0, __p1, __p2) __extension__ ({ \
+  uint64x2_t __s0 = __p0; \
+  uint64x2_t __s1 = __p1; \
+  uint64x2_t __rev0;  __rev0 = __builtin_shufflevector(__s0, __s0, 1, 0); \
+  uint64x2_t __rev1;  __rev1 = __builtin_shufflevector(__s1, __s1, 1, 0); \
+  uint64x2_t __ret; \
+  __ret = (uint64x2_t) __builtin_neon_vxarq_v((int8x16_t)__rev0, (int8x16_t)__rev1, __p2, 51); \
+  __ret = __builtin_shufflevector(__ret, __ret, 1, 0); \
+  __ret; \
+})
 #endif
 
 #endif

@@ -1,5 +1,6 @@
 {
   __dfsan_*;
+  __dfso_*;
   __dfsw_*;
   __interceptor_mmap;
   __interceptor_mmap64;
