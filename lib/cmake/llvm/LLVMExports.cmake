@@ -396,7 +396,7 @@ set_target_properties(LLVMSymbolize PROPERTIES
 add_library(LLVMExecutionEngine STATIC IMPORTED)
 
 set_target_properties(LLVMExecutionEngine PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMCore;LLVMMC;LLVMObject;LLVMRuntimeDyld;LLVMSupport;LLVMTarget"
+  INTERFACE_LINK_LIBRARIES "LLVMCore;LLVMMC;LLVMObject;LLVMOrcTargetProcess;LLVMRuntimeDyld;LLVMSupport;LLVMTarget"
 )
 
 # Create imported target LLVMInterpreter
