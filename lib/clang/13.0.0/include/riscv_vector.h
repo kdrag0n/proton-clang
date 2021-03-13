@@ -1,0 +1,532 @@
+/*===---- riscv_vector.h - RISC-V V-extension RVVIntrinsics -------------------===
+ *
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+#ifndef __RISCV_VECTOR_H
+#define __RISCV_VECTOR_H
+
+#include <stdint.h>
+#include <stddef.h>
+
+#ifndef __riscv_vector
+#error "Vector intrinsics require the vector extension."
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+typedef __rvv_bool64_t vbool64_t;
+typedef __rvv_bool32_t vbool32_t;
+typedef __rvv_bool16_t vbool16_t;
+typedef __rvv_bool8_t vbool8_t;
+typedef __rvv_bool4_t vbool4_t;
+typedef __rvv_bool2_t vbool2_t;
+typedef __rvv_bool1_t vbool1_t;
+typedef __rvv_int8mf8_t vint8mf8_t;
+typedef __rvv_uint8mf8_t vuint8mf8_t;
+typedef __rvv_int8mf4_t vint8mf4_t;
+typedef __rvv_uint8mf4_t vuint8mf4_t;
+typedef __rvv_int8mf2_t vint8mf2_t;
+typedef __rvv_uint8mf2_t vuint8mf2_t;
+typedef __rvv_int8m1_t vint8m1_t;
+typedef __rvv_uint8m1_t vuint8m1_t;
+typedef __rvv_int8m2_t vint8m2_t;
+typedef __rvv_uint8m2_t vuint8m2_t;
+typedef __rvv_int8m4_t vint8m4_t;
+typedef __rvv_uint8m4_t vuint8m4_t;
+typedef __rvv_int8m8_t vint8m8_t;
+typedef __rvv_uint8m8_t vuint8m8_t;
+typedef __rvv_int16mf4_t vint16mf4_t;
+typedef __rvv_uint16mf4_t vuint16mf4_t;
+typedef __rvv_int16mf2_t vint16mf2_t;
+typedef __rvv_uint16mf2_t vuint16mf2_t;
+typedef __rvv_int16m1_t vint16m1_t;
+typedef __rvv_uint16m1_t vuint16m1_t;
+typedef __rvv_int16m2_t vint16m2_t;
+typedef __rvv_uint16m2_t vuint16m2_t;
+typedef __rvv_int16m4_t vint16m4_t;
+typedef __rvv_uint16m4_t vuint16m4_t;
+typedef __rvv_int16m8_t vint16m8_t;
+typedef __rvv_uint16m8_t vuint16m8_t;
+typedef __rvv_int32mf2_t vint32mf2_t;
+typedef __rvv_uint32mf2_t vuint32mf2_t;
+typedef __rvv_int32m1_t vint32m1_t;
+typedef __rvv_uint32m1_t vuint32m1_t;
+typedef __rvv_int32m2_t vint32m2_t;
+typedef __rvv_uint32m2_t vuint32m2_t;
+typedef __rvv_int32m4_t vint32m4_t;
+typedef __rvv_uint32m4_t vuint32m4_t;
+typedef __rvv_int32m8_t vint32m8_t;
+typedef __rvv_uint32m8_t vuint32m8_t;
+typedef __rvv_int64m1_t vint64m1_t;
+typedef __rvv_uint64m1_t vuint64m1_t;
+typedef __rvv_int64m2_t vint64m2_t;
+typedef __rvv_uint64m2_t vuint64m2_t;
+typedef __rvv_int64m4_t vint64m4_t;
+typedef __rvv_uint64m4_t vuint64m4_t;
+typedef __rvv_int64m8_t vint64m8_t;
+typedef __rvv_uint64m8_t vuint64m8_t;
+#if defined(__riscv_zfh)
+typedef __rvv_float16mf4_t vfloat16mf4_t;
+typedef __rvv_float16mf2_t vfloat16mf2_t;
+typedef __rvv_float16m1_t vfloat16m1_t;
+typedef __rvv_float16m2_t vfloat16m2_t;
+typedef __rvv_float16m4_t vfloat16m4_t;
+typedef __rvv_float16m8_t vfloat16m8_t;
+#endif
+#if defined(__riscv_f)
+typedef __rvv_float32mf2_t vfloat32mf2_t;
+typedef __rvv_float32m1_t vfloat32m1_t;
+typedef __rvv_float32m2_t vfloat32m2_t;
+typedef __rvv_float32m4_t vfloat32m4_t;
+typedef __rvv_float32m8_t vfloat32m8_t;
+#endif
+#if defined(__riscv_d)
+typedef __rvv_float64m1_t vfloat64m1_t;
+typedef __rvv_float64m2_t vfloat64m2_t;
+typedef __rvv_float64m4_t vfloat64m4_t;
+typedef __rvv_float64m8_t vfloat64m8_t;
+#endif
+
+#define vadd_vv_i8m1(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i8m1((vint8m1_t)(op0), (vint8m1_t)(op1), (size_t)(op2))
+#define vadd_vv_i8m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i8m1_m((vint8m1_t)(op0), (vint8m1_t)(op1), (vint8m1_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vv_i8m2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i8m2((vint8m2_t)(op0), (vint8m2_t)(op1), (size_t)(op2))
+#define vadd_vv_i8m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i8m2_m((vint8m2_t)(op0), (vint8m2_t)(op1), (vint8m2_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vv_i8m4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i8m4((vint8m4_t)(op0), (vint8m4_t)(op1), (size_t)(op2))
+#define vadd_vv_i8m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i8m4_m((vint8m4_t)(op0), (vint8m4_t)(op1), (vint8m4_t)(op2), (vbool2_t)(op3), (size_t)(op4))
+#define vadd_vv_i8m8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i8m8((vint8m8_t)(op0), (vint8m8_t)(op1), (size_t)(op2))
+#define vadd_vv_i8m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i8m8_m((vint8m8_t)(op0), (vint8m8_t)(op1), (vint8m8_t)(op2), (vbool1_t)(op3), (size_t)(op4))
+#define vadd_vv_i8mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i8mf2((vint8mf2_t)(op0), (vint8mf2_t)(op1), (size_t)(op2))
+#define vadd_vv_i8mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i8mf2_m((vint8mf2_t)(op0), (vint8mf2_t)(op1), (vint8mf2_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vv_i8mf4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i8mf4((vint8mf4_t)(op0), (vint8mf4_t)(op1), (size_t)(op2))
+#define vadd_vv_i8mf4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i8mf4_m((vint8mf4_t)(op0), (vint8mf4_t)(op1), (vint8mf4_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vv_i8mf8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i8mf8((vint8mf8_t)(op0), (vint8mf8_t)(op1), (size_t)(op2))
+#define vadd_vv_i8mf8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i8mf8_m((vint8mf8_t)(op0), (vint8mf8_t)(op1), (vint8mf8_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vv_i16m1(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i16m1((vint16m1_t)(op0), (vint16m1_t)(op1), (size_t)(op2))
+#define vadd_vv_i16m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i16m1_m((vint16m1_t)(op0), (vint16m1_t)(op1), (vint16m1_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vv_i16m2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i16m2((vint16m2_t)(op0), (vint16m2_t)(op1), (size_t)(op2))
+#define vadd_vv_i16m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i16m2_m((vint16m2_t)(op0), (vint16m2_t)(op1), (vint16m2_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vv_i16m4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i16m4((vint16m4_t)(op0), (vint16m4_t)(op1), (size_t)(op2))
+#define vadd_vv_i16m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i16m4_m((vint16m4_t)(op0), (vint16m4_t)(op1), (vint16m4_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vv_i16m8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i16m8((vint16m8_t)(op0), (vint16m8_t)(op1), (size_t)(op2))
+#define vadd_vv_i16m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i16m8_m((vint16m8_t)(op0), (vint16m8_t)(op1), (vint16m8_t)(op2), (vbool2_t)(op3), (size_t)(op4))
+#define vadd_vv_i16mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i16mf2((vint16mf2_t)(op0), (vint16mf2_t)(op1), (size_t)(op2))
+#define vadd_vv_i16mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i16mf2_m((vint16mf2_t)(op0), (vint16mf2_t)(op1), (vint16mf2_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vv_i16mf4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i16mf4((vint16mf4_t)(op0), (vint16mf4_t)(op1), (size_t)(op2))
+#define vadd_vv_i16mf4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i16mf4_m((vint16mf4_t)(op0), (vint16mf4_t)(op1), (vint16mf4_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vv_i32m1(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i32m1((vint32m1_t)(op0), (vint32m1_t)(op1), (size_t)(op2))
+#define vadd_vv_i32m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i32m1_m((vint32m1_t)(op0), (vint32m1_t)(op1), (vint32m1_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vv_i32m2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i32m2((vint32m2_t)(op0), (vint32m2_t)(op1), (size_t)(op2))
+#define vadd_vv_i32m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i32m2_m((vint32m2_t)(op0), (vint32m2_t)(op1), (vint32m2_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vv_i32m4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i32m4((vint32m4_t)(op0), (vint32m4_t)(op1), (size_t)(op2))
+#define vadd_vv_i32m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i32m4_m((vint32m4_t)(op0), (vint32m4_t)(op1), (vint32m4_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vv_i32m8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i32m8((vint32m8_t)(op0), (vint32m8_t)(op1), (size_t)(op2))
+#define vadd_vv_i32m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i32m8_m((vint32m8_t)(op0), (vint32m8_t)(op1), (vint32m8_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vv_i32mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i32mf2((vint32mf2_t)(op0), (vint32mf2_t)(op1), (size_t)(op2))
+#define vadd_vv_i32mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i32mf2_m((vint32mf2_t)(op0), (vint32mf2_t)(op1), (vint32mf2_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vv_i64m1(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i64m1((vint64m1_t)(op0), (vint64m1_t)(op1), (size_t)(op2))
+#define vadd_vv_i64m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i64m1_m((vint64m1_t)(op0), (vint64m1_t)(op1), (vint64m1_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vv_i64m2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i64m2((vint64m2_t)(op0), (vint64m2_t)(op1), (size_t)(op2))
+#define vadd_vv_i64m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i64m2_m((vint64m2_t)(op0), (vint64m2_t)(op1), (vint64m2_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vv_i64m4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i64m4((vint64m4_t)(op0), (vint64m4_t)(op1), (size_t)(op2))
+#define vadd_vv_i64m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i64m4_m((vint64m4_t)(op0), (vint64m4_t)(op1), (vint64m4_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vv_i64m8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_i64m8((vint64m8_t)(op0), (vint64m8_t)(op1), (size_t)(op2))
+#define vadd_vv_i64m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_i64m8_m((vint64m8_t)(op0), (vint64m8_t)(op1), (vint64m8_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vx_i8m1(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i8m1((vint8m1_t)(op0), (int8_t)(op1), (size_t)(op2))
+#define vadd_vx_i8m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i8m1_m((vint8m1_t)(op0), (vint8m1_t)(op1), (int8_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vx_i8m2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i8m2((vint8m2_t)(op0), (int8_t)(op1), (size_t)(op2))
+#define vadd_vx_i8m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i8m2_m((vint8m2_t)(op0), (vint8m2_t)(op1), (int8_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vx_i8m4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i8m4((vint8m4_t)(op0), (int8_t)(op1), (size_t)(op2))
+#define vadd_vx_i8m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i8m4_m((vint8m4_t)(op0), (vint8m4_t)(op1), (int8_t)(op2), (vbool2_t)(op3), (size_t)(op4))
+#define vadd_vx_i8m8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i8m8((vint8m8_t)(op0), (int8_t)(op1), (size_t)(op2))
+#define vadd_vx_i8m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i8m8_m((vint8m8_t)(op0), (vint8m8_t)(op1), (int8_t)(op2), (vbool1_t)(op3), (size_t)(op4))
+#define vadd_vx_i8mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i8mf2((vint8mf2_t)(op0), (int8_t)(op1), (size_t)(op2))
+#define vadd_vx_i8mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i8mf2_m((vint8mf2_t)(op0), (vint8mf2_t)(op1), (int8_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vx_i8mf4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i8mf4((vint8mf4_t)(op0), (int8_t)(op1), (size_t)(op2))
+#define vadd_vx_i8mf4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i8mf4_m((vint8mf4_t)(op0), (vint8mf4_t)(op1), (int8_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vx_i8mf8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i8mf8((vint8mf8_t)(op0), (int8_t)(op1), (size_t)(op2))
+#define vadd_vx_i8mf8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i8mf8_m((vint8mf8_t)(op0), (vint8mf8_t)(op1), (int8_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vx_i16m1(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i16m1((vint16m1_t)(op0), (int16_t)(op1), (size_t)(op2))
+#define vadd_vx_i16m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i16m1_m((vint16m1_t)(op0), (vint16m1_t)(op1), (int16_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vx_i16m2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i16m2((vint16m2_t)(op0), (int16_t)(op1), (size_t)(op2))
+#define vadd_vx_i16m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i16m2_m((vint16m2_t)(op0), (vint16m2_t)(op1), (int16_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vx_i16m4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i16m4((vint16m4_t)(op0), (int16_t)(op1), (size_t)(op2))
+#define vadd_vx_i16m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i16m4_m((vint16m4_t)(op0), (vint16m4_t)(op1), (int16_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vx_i16m8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i16m8((vint16m8_t)(op0), (int16_t)(op1), (size_t)(op2))
+#define vadd_vx_i16m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i16m8_m((vint16m8_t)(op0), (vint16m8_t)(op1), (int16_t)(op2), (vbool2_t)(op3), (size_t)(op4))
+#define vadd_vx_i16mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i16mf2((vint16mf2_t)(op0), (int16_t)(op1), (size_t)(op2))
+#define vadd_vx_i16mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i16mf2_m((vint16mf2_t)(op0), (vint16mf2_t)(op1), (int16_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vx_i16mf4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i16mf4((vint16mf4_t)(op0), (int16_t)(op1), (size_t)(op2))
+#define vadd_vx_i16mf4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i16mf4_m((vint16mf4_t)(op0), (vint16mf4_t)(op1), (int16_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vx_i32m1(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i32m1((vint32m1_t)(op0), (int32_t)(op1), (size_t)(op2))
+#define vadd_vx_i32m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i32m1_m((vint32m1_t)(op0), (vint32m1_t)(op1), (int32_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vx_i32m2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i32m2((vint32m2_t)(op0), (int32_t)(op1), (size_t)(op2))
+#define vadd_vx_i32m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i32m2_m((vint32m2_t)(op0), (vint32m2_t)(op1), (int32_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vx_i32m4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i32m4((vint32m4_t)(op0), (int32_t)(op1), (size_t)(op2))
+#define vadd_vx_i32m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i32m4_m((vint32m4_t)(op0), (vint32m4_t)(op1), (int32_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vx_i32m8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i32m8((vint32m8_t)(op0), (int32_t)(op1), (size_t)(op2))
+#define vadd_vx_i32m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i32m8_m((vint32m8_t)(op0), (vint32m8_t)(op1), (int32_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vx_i32mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i32mf2((vint32mf2_t)(op0), (int32_t)(op1), (size_t)(op2))
+#define vadd_vx_i32mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i32mf2_m((vint32mf2_t)(op0), (vint32mf2_t)(op1), (int32_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vx_i64m1(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i64m1((vint64m1_t)(op0), (int64_t)(op1), (size_t)(op2))
+#define vadd_vx_i64m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i64m1_m((vint64m1_t)(op0), (vint64m1_t)(op1), (int64_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vx_i64m2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i64m2((vint64m2_t)(op0), (int64_t)(op1), (size_t)(op2))
+#define vadd_vx_i64m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i64m2_m((vint64m2_t)(op0), (vint64m2_t)(op1), (int64_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vx_i64m4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i64m4((vint64m4_t)(op0), (int64_t)(op1), (size_t)(op2))
+#define vadd_vx_i64m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i64m4_m((vint64m4_t)(op0), (vint64m4_t)(op1), (int64_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vx_i64m8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_i64m8((vint64m8_t)(op0), (int64_t)(op1), (size_t)(op2))
+#define vadd_vx_i64m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_i64m8_m((vint64m8_t)(op0), (vint64m8_t)(op1), (int64_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vv_u8m1(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u8m1((vuint8m1_t)(op0), (vuint8m1_t)(op1), (size_t)(op2))
+#define vadd_vv_u8m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u8m1_m((vuint8m1_t)(op0), (vuint8m1_t)(op1), (vuint8m1_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vv_u8m2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u8m2((vuint8m2_t)(op0), (vuint8m2_t)(op1), (size_t)(op2))
+#define vadd_vv_u8m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u8m2_m((vuint8m2_t)(op0), (vuint8m2_t)(op1), (vuint8m2_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vv_u8m4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u8m4((vuint8m4_t)(op0), (vuint8m4_t)(op1), (size_t)(op2))
+#define vadd_vv_u8m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u8m4_m((vuint8m4_t)(op0), (vuint8m4_t)(op1), (vuint8m4_t)(op2), (vbool2_t)(op3), (size_t)(op4))
+#define vadd_vv_u8m8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u8m8((vuint8m8_t)(op0), (vuint8m8_t)(op1), (size_t)(op2))
+#define vadd_vv_u8m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u8m8_m((vuint8m8_t)(op0), (vuint8m8_t)(op1), (vuint8m8_t)(op2), (vbool1_t)(op3), (size_t)(op4))
+#define vadd_vv_u8mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u8mf2((vuint8mf2_t)(op0), (vuint8mf2_t)(op1), (size_t)(op2))
+#define vadd_vv_u8mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u8mf2_m((vuint8mf2_t)(op0), (vuint8mf2_t)(op1), (vuint8mf2_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vv_u8mf4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u8mf4((vuint8mf4_t)(op0), (vuint8mf4_t)(op1), (size_t)(op2))
+#define vadd_vv_u8mf4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u8mf4_m((vuint8mf4_t)(op0), (vuint8mf4_t)(op1), (vuint8mf4_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vv_u8mf8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u8mf8((vuint8mf8_t)(op0), (vuint8mf8_t)(op1), (size_t)(op2))
+#define vadd_vv_u8mf8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u8mf8_m((vuint8mf8_t)(op0), (vuint8mf8_t)(op1), (vuint8mf8_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vv_u16m1(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u16m1((vuint16m1_t)(op0), (vuint16m1_t)(op1), (size_t)(op2))
+#define vadd_vv_u16m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u16m1_m((vuint16m1_t)(op0), (vuint16m1_t)(op1), (vuint16m1_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vv_u16m2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u16m2((vuint16m2_t)(op0), (vuint16m2_t)(op1), (size_t)(op2))
+#define vadd_vv_u16m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u16m2_m((vuint16m2_t)(op0), (vuint16m2_t)(op1), (vuint16m2_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vv_u16m4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u16m4((vuint16m4_t)(op0), (vuint16m4_t)(op1), (size_t)(op2))
+#define vadd_vv_u16m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u16m4_m((vuint16m4_t)(op0), (vuint16m4_t)(op1), (vuint16m4_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vv_u16m8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u16m8((vuint16m8_t)(op0), (vuint16m8_t)(op1), (size_t)(op2))
+#define vadd_vv_u16m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u16m8_m((vuint16m8_t)(op0), (vuint16m8_t)(op1), (vuint16m8_t)(op2), (vbool2_t)(op3), (size_t)(op4))
+#define vadd_vv_u16mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u16mf2((vuint16mf2_t)(op0), (vuint16mf2_t)(op1), (size_t)(op2))
+#define vadd_vv_u16mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u16mf2_m((vuint16mf2_t)(op0), (vuint16mf2_t)(op1), (vuint16mf2_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vv_u16mf4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u16mf4((vuint16mf4_t)(op0), (vuint16mf4_t)(op1), (size_t)(op2))
+#define vadd_vv_u16mf4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u16mf4_m((vuint16mf4_t)(op0), (vuint16mf4_t)(op1), (vuint16mf4_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vv_u32m1(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u32m1((vuint32m1_t)(op0), (vuint32m1_t)(op1), (size_t)(op2))
+#define vadd_vv_u32m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u32m1_m((vuint32m1_t)(op0), (vuint32m1_t)(op1), (vuint32m1_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vv_u32m2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u32m2((vuint32m2_t)(op0), (vuint32m2_t)(op1), (size_t)(op2))
+#define vadd_vv_u32m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u32m2_m((vuint32m2_t)(op0), (vuint32m2_t)(op1), (vuint32m2_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vv_u32m4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u32m4((vuint32m4_t)(op0), (vuint32m4_t)(op1), (size_t)(op2))
+#define vadd_vv_u32m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u32m4_m((vuint32m4_t)(op0), (vuint32m4_t)(op1), (vuint32m4_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vv_u32m8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u32m8((vuint32m8_t)(op0), (vuint32m8_t)(op1), (size_t)(op2))
+#define vadd_vv_u32m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u32m8_m((vuint32m8_t)(op0), (vuint32m8_t)(op1), (vuint32m8_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vv_u32mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u32mf2((vuint32mf2_t)(op0), (vuint32mf2_t)(op1), (size_t)(op2))
+#define vadd_vv_u32mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u32mf2_m((vuint32mf2_t)(op0), (vuint32mf2_t)(op1), (vuint32mf2_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vv_u64m1(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u64m1((vuint64m1_t)(op0), (vuint64m1_t)(op1), (size_t)(op2))
+#define vadd_vv_u64m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u64m1_m((vuint64m1_t)(op0), (vuint64m1_t)(op1), (vuint64m1_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vv_u64m2(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u64m2((vuint64m2_t)(op0), (vuint64m2_t)(op1), (size_t)(op2))
+#define vadd_vv_u64m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u64m2_m((vuint64m2_t)(op0), (vuint64m2_t)(op1), (vuint64m2_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vv_u64m4(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u64m4((vuint64m4_t)(op0), (vuint64m4_t)(op1), (size_t)(op2))
+#define vadd_vv_u64m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u64m4_m((vuint64m4_t)(op0), (vuint64m4_t)(op1), (vuint64m4_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vv_u64m8(op0, op1, op2) \
+__builtin_rvv_vadd_vv_u64m8((vuint64m8_t)(op0), (vuint64m8_t)(op1), (size_t)(op2))
+#define vadd_vv_u64m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vv_u64m8_m((vuint64m8_t)(op0), (vuint64m8_t)(op1), (vuint64m8_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vx_u8m1(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u8m1((vuint8m1_t)(op0), (uint8_t)(op1), (size_t)(op2))
+#define vadd_vx_u8m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u8m1_m((vuint8m1_t)(op0), (vuint8m1_t)(op1), (uint8_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vx_u8m2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u8m2((vuint8m2_t)(op0), (uint8_t)(op1), (size_t)(op2))
+#define vadd_vx_u8m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u8m2_m((vuint8m2_t)(op0), (vuint8m2_t)(op1), (uint8_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vx_u8m4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u8m4((vuint8m4_t)(op0), (uint8_t)(op1), (size_t)(op2))
+#define vadd_vx_u8m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u8m4_m((vuint8m4_t)(op0), (vuint8m4_t)(op1), (uint8_t)(op2), (vbool2_t)(op3), (size_t)(op4))
+#define vadd_vx_u8m8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u8m8((vuint8m8_t)(op0), (uint8_t)(op1), (size_t)(op2))
+#define vadd_vx_u8m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u8m8_m((vuint8m8_t)(op0), (vuint8m8_t)(op1), (uint8_t)(op2), (vbool1_t)(op3), (size_t)(op4))
+#define vadd_vx_u8mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u8mf2((vuint8mf2_t)(op0), (uint8_t)(op1), (size_t)(op2))
+#define vadd_vx_u8mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u8mf2_m((vuint8mf2_t)(op0), (vuint8mf2_t)(op1), (uint8_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vx_u8mf4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u8mf4((vuint8mf4_t)(op0), (uint8_t)(op1), (size_t)(op2))
+#define vadd_vx_u8mf4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u8mf4_m((vuint8mf4_t)(op0), (vuint8mf4_t)(op1), (uint8_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vx_u8mf8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u8mf8((vuint8mf8_t)(op0), (uint8_t)(op1), (size_t)(op2))
+#define vadd_vx_u8mf8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u8mf8_m((vuint8mf8_t)(op0), (vuint8mf8_t)(op1), (uint8_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vx_u16m1(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u16m1((vuint16m1_t)(op0), (uint16_t)(op1), (size_t)(op2))
+#define vadd_vx_u16m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u16m1_m((vuint16m1_t)(op0), (vuint16m1_t)(op1), (uint16_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vx_u16m2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u16m2((vuint16m2_t)(op0), (uint16_t)(op1), (size_t)(op2))
+#define vadd_vx_u16m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u16m2_m((vuint16m2_t)(op0), (vuint16m2_t)(op1), (uint16_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vx_u16m4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u16m4((vuint16m4_t)(op0), (uint16_t)(op1), (size_t)(op2))
+#define vadd_vx_u16m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u16m4_m((vuint16m4_t)(op0), (vuint16m4_t)(op1), (uint16_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vx_u16m8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u16m8((vuint16m8_t)(op0), (uint16_t)(op1), (size_t)(op2))
+#define vadd_vx_u16m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u16m8_m((vuint16m8_t)(op0), (vuint16m8_t)(op1), (uint16_t)(op2), (vbool2_t)(op3), (size_t)(op4))
+#define vadd_vx_u16mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u16mf2((vuint16mf2_t)(op0), (uint16_t)(op1), (size_t)(op2))
+#define vadd_vx_u16mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u16mf2_m((vuint16mf2_t)(op0), (vuint16mf2_t)(op1), (uint16_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vx_u16mf4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u16mf4((vuint16mf4_t)(op0), (uint16_t)(op1), (size_t)(op2))
+#define vadd_vx_u16mf4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u16mf4_m((vuint16mf4_t)(op0), (vuint16mf4_t)(op1), (uint16_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vx_u32m1(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u32m1((vuint32m1_t)(op0), (uint32_t)(op1), (size_t)(op2))
+#define vadd_vx_u32m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u32m1_m((vuint32m1_t)(op0), (vuint32m1_t)(op1), (uint32_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vx_u32m2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u32m2((vuint32m2_t)(op0), (uint32_t)(op1), (size_t)(op2))
+#define vadd_vx_u32m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u32m2_m((vuint32m2_t)(op0), (vuint32m2_t)(op1), (uint32_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vx_u32m4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u32m4((vuint32m4_t)(op0), (uint32_t)(op1), (size_t)(op2))
+#define vadd_vx_u32m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u32m4_m((vuint32m4_t)(op0), (vuint32m4_t)(op1), (uint32_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vadd_vx_u32m8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u32m8((vuint32m8_t)(op0), (uint32_t)(op1), (size_t)(op2))
+#define vadd_vx_u32m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u32m8_m((vuint32m8_t)(op0), (vuint32m8_t)(op1), (uint32_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vadd_vx_u32mf2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u32mf2((vuint32mf2_t)(op0), (uint32_t)(op1), (size_t)(op2))
+#define vadd_vx_u32mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u32mf2_m((vuint32mf2_t)(op0), (vuint32mf2_t)(op1), (uint32_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vx_u64m1(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u64m1((vuint64m1_t)(op0), (uint64_t)(op1), (size_t)(op2))
+#define vadd_vx_u64m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u64m1_m((vuint64m1_t)(op0), (vuint64m1_t)(op1), (uint64_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vadd_vx_u64m2(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u64m2((vuint64m2_t)(op0), (uint64_t)(op1), (size_t)(op2))
+#define vadd_vx_u64m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u64m2_m((vuint64m2_t)(op0), (vuint64m2_t)(op1), (uint64_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vadd_vx_u64m4(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u64m4((vuint64m4_t)(op0), (uint64_t)(op1), (size_t)(op2))
+#define vadd_vx_u64m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u64m4_m((vuint64m4_t)(op0), (vuint64m4_t)(op1), (uint64_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vadd_vx_u64m8(op0, op1, op2) \
+__builtin_rvv_vadd_vx_u64m8((vuint64m8_t)(op0), (uint64_t)(op1), (size_t)(op2))
+#define vadd_vx_u64m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vadd_vx_u64m8_m((vuint64m8_t)(op0), (vuint64m8_t)(op1), (uint64_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#if defined(__riscv_f)
+#define vfadd_vv_f32m1(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f32m1((vfloat32m1_t)(op0), (vfloat32m1_t)(op1), (size_t)(op2))
+#define vfadd_vv_f32m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f32m1_m((vfloat32m1_t)(op0), (vfloat32m1_t)(op1), (vfloat32m1_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vfadd_vv_f32m2(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f32m2((vfloat32m2_t)(op0), (vfloat32m2_t)(op1), (size_t)(op2))
+#define vfadd_vv_f32m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f32m2_m((vfloat32m2_t)(op0), (vfloat32m2_t)(op1), (vfloat32m2_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vfadd_vv_f32m4(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f32m4((vfloat32m4_t)(op0), (vfloat32m4_t)(op1), (size_t)(op2))
+#define vfadd_vv_f32m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f32m4_m((vfloat32m4_t)(op0), (vfloat32m4_t)(op1), (vfloat32m4_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vfadd_vv_f32m8(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f32m8((vfloat32m8_t)(op0), (vfloat32m8_t)(op1), (size_t)(op2))
+#define vfadd_vv_f32m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f32m8_m((vfloat32m8_t)(op0), (vfloat32m8_t)(op1), (vfloat32m8_t)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vfadd_vv_f32mf2(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f32mf2((vfloat32mf2_t)(op0), (vfloat32mf2_t)(op1), (size_t)(op2))
+#define vfadd_vv_f32mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f32mf2_m((vfloat32mf2_t)(op0), (vfloat32mf2_t)(op1), (vfloat32mf2_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vfadd_vf_f32m1(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f32m1((vfloat32m1_t)(op0), (float)(op1), (size_t)(op2))
+#define vfadd_vf_f32m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f32m1_m((vfloat32m1_t)(op0), (vfloat32m1_t)(op1), (float)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vfadd_vf_f32m2(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f32m2((vfloat32m2_t)(op0), (float)(op1), (size_t)(op2))
+#define vfadd_vf_f32m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f32m2_m((vfloat32m2_t)(op0), (vfloat32m2_t)(op1), (float)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vfadd_vf_f32m4(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f32m4((vfloat32m4_t)(op0), (float)(op1), (size_t)(op2))
+#define vfadd_vf_f32m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f32m4_m((vfloat32m4_t)(op0), (vfloat32m4_t)(op1), (float)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vfadd_vf_f32m8(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f32m8((vfloat32m8_t)(op0), (float)(op1), (size_t)(op2))
+#define vfadd_vf_f32m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f32m8_m((vfloat32m8_t)(op0), (vfloat32m8_t)(op1), (float)(op2), (vbool4_t)(op3), (size_t)(op4))
+#define vfadd_vf_f32mf2(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f32mf2((vfloat32mf2_t)(op0), (float)(op1), (size_t)(op2))
+#define vfadd_vf_f32mf2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f32mf2_m((vfloat32mf2_t)(op0), (vfloat32mf2_t)(op1), (float)(op2), (vbool64_t)(op3), (size_t)(op4))
+#endif
+
+#if defined(__riscv_d)
+#define vfadd_vv_f64m1(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f64m1((vfloat64m1_t)(op0), (vfloat64m1_t)(op1), (size_t)(op2))
+#define vfadd_vv_f64m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f64m1_m((vfloat64m1_t)(op0), (vfloat64m1_t)(op1), (vfloat64m1_t)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vfadd_vv_f64m2(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f64m2((vfloat64m2_t)(op0), (vfloat64m2_t)(op1), (size_t)(op2))
+#define vfadd_vv_f64m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f64m2_m((vfloat64m2_t)(op0), (vfloat64m2_t)(op1), (vfloat64m2_t)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vfadd_vv_f64m4(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f64m4((vfloat64m4_t)(op0), (vfloat64m4_t)(op1), (size_t)(op2))
+#define vfadd_vv_f64m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f64m4_m((vfloat64m4_t)(op0), (vfloat64m4_t)(op1), (vfloat64m4_t)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vfadd_vv_f64m8(op0, op1, op2) \
+__builtin_rvv_vfadd_vv_f64m8((vfloat64m8_t)(op0), (vfloat64m8_t)(op1), (size_t)(op2))
+#define vfadd_vv_f64m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vv_f64m8_m((vfloat64m8_t)(op0), (vfloat64m8_t)(op1), (vfloat64m8_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vfadd_vf_f64m1(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f64m1((vfloat64m1_t)(op0), (double)(op1), (size_t)(op2))
+#define vfadd_vf_f64m1_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f64m1_m((vfloat64m1_t)(op0), (vfloat64m1_t)(op1), (double)(op2), (vbool64_t)(op3), (size_t)(op4))
+#define vfadd_vf_f64m2(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f64m2((vfloat64m2_t)(op0), (double)(op1), (size_t)(op2))
+#define vfadd_vf_f64m2_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f64m2_m((vfloat64m2_t)(op0), (vfloat64m2_t)(op1), (double)(op2), (vbool32_t)(op3), (size_t)(op4))
+#define vfadd_vf_f64m4(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f64m4((vfloat64m4_t)(op0), (double)(op1), (size_t)(op2))
+#define vfadd_vf_f64m4_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f64m4_m((vfloat64m4_t)(op0), (vfloat64m4_t)(op1), (double)(op2), (vbool16_t)(op3), (size_t)(op4))
+#define vfadd_vf_f64m8(op0, op1, op2) \
+__builtin_rvv_vfadd_vf_f64m8((vfloat64m8_t)(op0), (double)(op1), (size_t)(op2))
+#define vfadd_vf_f64m8_m(op3, op0, op1, op2, op4) \
+__builtin_rvv_vfadd_vf_f64m8_m((vfloat64m8_t)(op0), (vfloat64m8_t)(op1), (double)(op2), (vbool8_t)(op3), (size_t)(op4))
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif // __riscv_vector
+#endif // __RISCV_VECTOR_H
