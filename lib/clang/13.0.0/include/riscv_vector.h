@@ -22,6 +22,60 @@
 extern "C" {
 #endif
 
+
+#define vsetvl_e8mf8(avl) __builtin_rvv_vsetvli((size_t)(avl), 0, 5)
+#define vsetvl_e8mf4(avl) __builtin_rvv_vsetvli((size_t)(avl), 0, 6)
+#define vsetvl_e8mf2(avl) __builtin_rvv_vsetvli((size_t)(avl), 0, 7)
+#define vsetvl_e8m1(avl) __builtin_rvv_vsetvli((size_t)(avl), 0, 0)
+#define vsetvl_e8m2(avl) __builtin_rvv_vsetvli((size_t)(avl), 0, 1)
+#define vsetvl_e8m4(avl) __builtin_rvv_vsetvli((size_t)(avl), 0, 2)
+#define vsetvl_e8m8(avl) __builtin_rvv_vsetvli((size_t)(avl), 0, 3)
+
+#define vsetvl_e16mf4(avl) __builtin_rvv_vsetvli((size_t)(avl), 1, 6)
+#define vsetvl_e16mf2(avl) __builtin_rvv_vsetvli((size_t)(avl), 1, 7)
+#define vsetvl_e16m1(avl) __builtin_rvv_vsetvli((size_t)(avl), 1, 0)
+#define vsetvl_e16m2(avl) __builtin_rvv_vsetvli((size_t)(avl), 1, 1)
+#define vsetvl_e16m4(avl) __builtin_rvv_vsetvli((size_t)(avl), 1, 2)
+#define vsetvl_e16m8(avl) __builtin_rvv_vsetvli((size_t)(avl), 1, 3)
+
+#define vsetvl_e32mf2(avl) __builtin_rvv_vsetvli((size_t)(avl), 2, 7)
+#define vsetvl_e32m1(avl) __builtin_rvv_vsetvli((size_t)(avl), 2, 0)
+#define vsetvl_e32m2(avl) __builtin_rvv_vsetvli((size_t)(avl), 2, 1)
+#define vsetvl_e32m4(avl) __builtin_rvv_vsetvli((size_t)(avl), 2, 2)
+#define vsetvl_e32m8(avl) __builtin_rvv_vsetvli((size_t)(avl), 2, 3)
+
+#define vsetvl_e64m1(avl) __builtin_rvv_vsetvli((size_t)(avl), 3, 0)
+#define vsetvl_e64m2(avl) __builtin_rvv_vsetvli((size_t)(avl), 3, 1)
+#define vsetvl_e64m4(avl) __builtin_rvv_vsetvli((size_t)(avl), 3, 2)
+#define vsetvl_e64m8(avl) __builtin_rvv_vsetvli((size_t)(avl), 3, 3)
+
+
+#define vsetvlmax_e8mf8() __builtin_rvv_vsetvlimax(0, 5)
+#define vsetvlmax_e8mf4() __builtin_rvv_vsetvlimax(0, 6)
+#define vsetvlmax_e8mf2() __builtin_rvv_vsetvlimax(0, 7)
+#define vsetvlmax_e8m1() __builtin_rvv_vsetvlimax(0, 0)
+#define vsetvlmax_e8m2() __builtin_rvv_vsetvlimax(0, 1)
+#define vsetvlmax_e8m4() __builtin_rvv_vsetvlimax(0, 2)
+#define vsetvlmax_e8m8() __builtin_rvv_vsetvlimax(0, 3)
+
+#define vsetvlmax_e16mf4() __builtin_rvv_vsetvlimax(1, 6)
+#define vsetvlmax_e16mf2() __builtin_rvv_vsetvlimax(1, 7)
+#define vsetvlmax_e16m1() __builtin_rvv_vsetvlimax(1, 0)
+#define vsetvlmax_e16m2() __builtin_rvv_vsetvlimax(1, 1)
+#define vsetvlmax_e16m4() __builtin_rvv_vsetvlimax(1, 2)
+#define vsetvlmax_e16m8() __builtin_rvv_vsetvlimax(1, 3)
+
+#define vsetvlmax_e32mf2() __builtin_rvv_vsetvlimax(2, 7)
+#define vsetvlmax_e32m1() __builtin_rvv_vsetvlimax(2, 0)
+#define vsetvlmax_e32m2() __builtin_rvv_vsetvlimax(2, 1)
+#define vsetvlmax_e32m4() __builtin_rvv_vsetvlimax(2, 2)
+#define vsetvlmax_e32m8() __builtin_rvv_vsetvlimax(2, 3)
+
+#define vsetvlmax_e64m1() __builtin_rvv_vsetvlimax(3, 0)
+#define vsetvlmax_e64m2() __builtin_rvv_vsetvlimax(3, 1)
+#define vsetvlmax_e64m4() __builtin_rvv_vsetvlimax(3, 2)
+#define vsetvlmax_e64m8() __builtin_rvv_vsetvlimax(3, 3)
+
 typedef __rvv_bool64_t vbool64_t;
 typedef __rvv_bool32_t vbool32_t;
 typedef __rvv_bool16_t vbool16_t;
@@ -183,6 +237,254 @@ __builtin_rvv_vadd_vv_i64m4_m((vint64m4_t)(op0), (vint64m4_t)(op1), (vint64m4_t)
 __builtin_rvv_vadd_vv_i64m8((vint64m8_t)(op0), (vint64m8_t)(op1), (size_t)(op2))
 #define vadd_vv_i64m8_m(op3, op0, op1, op2, op4) \
 __builtin_rvv_vadd_vv_i64m8_m((vint64m8_t)(op0), (vint64m8_t)(op1), (vint64m8_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vle8_v_i8m1(op0, op1) \
+__builtin_rvv_vle8_v_i8m1((const int8_t *)(op0), (size_t)(op1))
+#define vle8_v_i8m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_i8m1_m((vint8m1_t)(op0), (const int8_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vle8_v_i8m2(op0, op1) \
+__builtin_rvv_vle8_v_i8m2((const int8_t *)(op0), (size_t)(op1))
+#define vle8_v_i8m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_i8m2_m((vint8m2_t)(op0), (const int8_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vle8_v_i8m4(op0, op1) \
+__builtin_rvv_vle8_v_i8m4((const int8_t *)(op0), (size_t)(op1))
+#define vle8_v_i8m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_i8m4_m((vint8m4_t)(op0), (const int8_t *)(op1), (vbool2_t)(op2), (size_t)(op3))
+#define vle8_v_i8m8(op0, op1) \
+__builtin_rvv_vle8_v_i8m8((const int8_t *)(op0), (size_t)(op1))
+#define vle8_v_i8m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_i8m8_m((vint8m8_t)(op0), (const int8_t *)(op1), (vbool1_t)(op2), (size_t)(op3))
+#define vle8_v_i8mf2(op0, op1) \
+__builtin_rvv_vle8_v_i8mf2((const int8_t *)(op0), (size_t)(op1))
+#define vle8_v_i8mf2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_i8mf2_m((vint8mf2_t)(op0), (const int8_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle8_v_i8mf4(op0, op1) \
+__builtin_rvv_vle8_v_i8mf4((const int8_t *)(op0), (size_t)(op1))
+#define vle8_v_i8mf4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_i8mf4_m((vint8mf4_t)(op0), (const int8_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle8_v_i8mf8(op0, op1) \
+__builtin_rvv_vle8_v_i8mf8((const int8_t *)(op0), (size_t)(op1))
+#define vle8_v_i8mf8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_i8mf8_m((vint8mf8_t)(op0), (const int8_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle32_v_i32m1(op0, op1) \
+__builtin_rvv_vle32_v_i32m1((const int32_t *)(op0), (size_t)(op1))
+#define vle32_v_i32m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_i32m1_m((vint32m1_t)(op0), (const int32_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle32_v_i32m2(op0, op1) \
+__builtin_rvv_vle32_v_i32m2((const int32_t *)(op0), (size_t)(op1))
+#define vle32_v_i32m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_i32m2_m((vint32m2_t)(op0), (const int32_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle32_v_i32m4(op0, op1) \
+__builtin_rvv_vle32_v_i32m4((const int32_t *)(op0), (size_t)(op1))
+#define vle32_v_i32m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_i32m4_m((vint32m4_t)(op0), (const int32_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vle32_v_i32m8(op0, op1) \
+__builtin_rvv_vle32_v_i32m8((const int32_t *)(op0), (size_t)(op1))
+#define vle32_v_i32m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_i32m8_m((vint32m8_t)(op0), (const int32_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vle32_v_i32mf2(op0, op1) \
+__builtin_rvv_vle32_v_i32mf2((const int32_t *)(op0), (size_t)(op1))
+#define vle32_v_i32mf2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_i32mf2_m((vint32mf2_t)(op0), (const int32_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle32_v_u32m1(op0, op1) \
+__builtin_rvv_vle32_v_u32m1((const uint32_t *)(op0), (size_t)(op1))
+#define vle32_v_u32m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_u32m1_m((vuint32m1_t)(op0), (const uint32_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle32_v_u32m2(op0, op1) \
+__builtin_rvv_vle32_v_u32m2((const uint32_t *)(op0), (size_t)(op1))
+#define vle32_v_u32m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_u32m2_m((vuint32m2_t)(op0), (const uint32_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle32_v_u32m4(op0, op1) \
+__builtin_rvv_vle32_v_u32m4((const uint32_t *)(op0), (size_t)(op1))
+#define vle32_v_u32m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_u32m4_m((vuint32m4_t)(op0), (const uint32_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vle32_v_u32m8(op0, op1) \
+__builtin_rvv_vle32_v_u32m8((const uint32_t *)(op0), (size_t)(op1))
+#define vle32_v_u32m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_u32m8_m((vuint32m8_t)(op0), (const uint32_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vle32_v_u32mf2(op0, op1) \
+__builtin_rvv_vle32_v_u32mf2((const uint32_t *)(op0), (size_t)(op1))
+#define vle32_v_u32mf2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_u32mf2_m((vuint32mf2_t)(op0), (const uint32_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle64_v_i64m1(op0, op1) \
+__builtin_rvv_vle64_v_i64m1((const int64_t *)(op0), (size_t)(op1))
+#define vle64_v_i64m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_i64m1_m((vint64m1_t)(op0), (const int64_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle64_v_i64m2(op0, op1) \
+__builtin_rvv_vle64_v_i64m2((const int64_t *)(op0), (size_t)(op1))
+#define vle64_v_i64m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_i64m2_m((vint64m2_t)(op0), (const int64_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle64_v_i64m4(op0, op1) \
+__builtin_rvv_vle64_v_i64m4((const int64_t *)(op0), (size_t)(op1))
+#define vle64_v_i64m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_i64m4_m((vint64m4_t)(op0), (const int64_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle64_v_i64m8(op0, op1) \
+__builtin_rvv_vle64_v_i64m8((const int64_t *)(op0), (size_t)(op1))
+#define vle64_v_i64m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_i64m8_m((vint64m8_t)(op0), (const int64_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vle64_v_u64m1(op0, op1) \
+__builtin_rvv_vle64_v_u64m1((const uint64_t *)(op0), (size_t)(op1))
+#define vle64_v_u64m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_u64m1_m((vuint64m1_t)(op0), (const uint64_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle64_v_u64m2(op0, op1) \
+__builtin_rvv_vle64_v_u64m2((const uint64_t *)(op0), (size_t)(op1))
+#define vle64_v_u64m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_u64m2_m((vuint64m2_t)(op0), (const uint64_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle64_v_u64m4(op0, op1) \
+__builtin_rvv_vle64_v_u64m4((const uint64_t *)(op0), (size_t)(op1))
+#define vle64_v_u64m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_u64m4_m((vuint64m4_t)(op0), (const uint64_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle64_v_u64m8(op0, op1) \
+__builtin_rvv_vle64_v_u64m8((const uint64_t *)(op0), (size_t)(op1))
+#define vle64_v_u64m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_u64m8_m((vuint64m8_t)(op0), (const uint64_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse16_v_i16m1(op1, op0, op2) \
+__builtin_rvv_vse16_v_i16m1((vint16m1_t)(op0), (int16_t *)(op1), (size_t)(op2))
+#define vse16_v_i16m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_i16m1_m((vint16m1_t)(op0), (int16_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse16_v_i16m2(op1, op0, op2) \
+__builtin_rvv_vse16_v_i16m2((vint16m2_t)(op0), (int16_t *)(op1), (size_t)(op2))
+#define vse16_v_i16m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_i16m2_m((vint16m2_t)(op0), (int16_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse16_v_i16m4(op1, op0, op2) \
+__builtin_rvv_vse16_v_i16m4((vint16m4_t)(op0), (int16_t *)(op1), (size_t)(op2))
+#define vse16_v_i16m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_i16m4_m((vint16m4_t)(op0), (int16_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vse16_v_i16m8(op1, op0, op2) \
+__builtin_rvv_vse16_v_i16m8((vint16m8_t)(op0), (int16_t *)(op1), (size_t)(op2))
+#define vse16_v_i16m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_i16m8_m((vint16m8_t)(op0), (int16_t *)(op1), (vbool2_t)(op2), (size_t)(op3))
+#define vse16_v_i16mf2(op1, op0, op2) \
+__builtin_rvv_vse16_v_i16mf2((vint16mf2_t)(op0), (int16_t *)(op1), (size_t)(op2))
+#define vse16_v_i16mf2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_i16mf2_m((vint16mf2_t)(op0), (int16_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse16_v_i16mf4(op1, op0, op2) \
+__builtin_rvv_vse16_v_i16mf4((vint16mf4_t)(op0), (int16_t *)(op1), (size_t)(op2))
+#define vse16_v_i16mf4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_i16mf4_m((vint16mf4_t)(op0), (int16_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle8_v_u8m1(op0, op1) \
+__builtin_rvv_vle8_v_u8m1((const uint8_t *)(op0), (size_t)(op1))
+#define vle8_v_u8m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_u8m1_m((vuint8m1_t)(op0), (const uint8_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vle8_v_u8m2(op0, op1) \
+__builtin_rvv_vle8_v_u8m2((const uint8_t *)(op0), (size_t)(op1))
+#define vle8_v_u8m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_u8m2_m((vuint8m2_t)(op0), (const uint8_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vle8_v_u8m4(op0, op1) \
+__builtin_rvv_vle8_v_u8m4((const uint8_t *)(op0), (size_t)(op1))
+#define vle8_v_u8m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_u8m4_m((vuint8m4_t)(op0), (const uint8_t *)(op1), (vbool2_t)(op2), (size_t)(op3))
+#define vle8_v_u8m8(op0, op1) \
+__builtin_rvv_vle8_v_u8m8((const uint8_t *)(op0), (size_t)(op1))
+#define vle8_v_u8m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_u8m8_m((vuint8m8_t)(op0), (const uint8_t *)(op1), (vbool1_t)(op2), (size_t)(op3))
+#define vle8_v_u8mf2(op0, op1) \
+__builtin_rvv_vle8_v_u8mf2((const uint8_t *)(op0), (size_t)(op1))
+#define vle8_v_u8mf2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_u8mf2_m((vuint8mf2_t)(op0), (const uint8_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle8_v_u8mf4(op0, op1) \
+__builtin_rvv_vle8_v_u8mf4((const uint8_t *)(op0), (size_t)(op1))
+#define vle8_v_u8mf4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_u8mf4_m((vuint8mf4_t)(op0), (const uint8_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle8_v_u8mf8(op0, op1) \
+__builtin_rvv_vle8_v_u8mf8((const uint8_t *)(op0), (size_t)(op1))
+#define vle8_v_u8mf8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle8_v_u8mf8_m((vuint8mf8_t)(op0), (const uint8_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse16_v_u16m1(op1, op0, op2) \
+__builtin_rvv_vse16_v_u16m1((vuint16m1_t)(op0), (uint16_t *)(op1), (size_t)(op2))
+#define vse16_v_u16m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_u16m1_m((vuint16m1_t)(op0), (uint16_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse16_v_u16m2(op1, op0, op2) \
+__builtin_rvv_vse16_v_u16m2((vuint16m2_t)(op0), (uint16_t *)(op1), (size_t)(op2))
+#define vse16_v_u16m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_u16m2_m((vuint16m2_t)(op0), (uint16_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse16_v_u16m4(op1, op0, op2) \
+__builtin_rvv_vse16_v_u16m4((vuint16m4_t)(op0), (uint16_t *)(op1), (size_t)(op2))
+#define vse16_v_u16m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_u16m4_m((vuint16m4_t)(op0), (uint16_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vse16_v_u16m8(op1, op0, op2) \
+__builtin_rvv_vse16_v_u16m8((vuint16m8_t)(op0), (uint16_t *)(op1), (size_t)(op2))
+#define vse16_v_u16m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_u16m8_m((vuint16m8_t)(op0), (uint16_t *)(op1), (vbool2_t)(op2), (size_t)(op3))
+#define vse16_v_u16mf2(op1, op0, op2) \
+__builtin_rvv_vse16_v_u16mf2((vuint16mf2_t)(op0), (uint16_t *)(op1), (size_t)(op2))
+#define vse16_v_u16mf2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_u16mf2_m((vuint16mf2_t)(op0), (uint16_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse16_v_u16mf4(op1, op0, op2) \
+__builtin_rvv_vse16_v_u16mf4((vuint16mf4_t)(op0), (uint16_t *)(op1), (size_t)(op2))
+#define vse16_v_u16mf4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse16_v_u16mf4_m((vuint16mf4_t)(op0), (uint16_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse32_v_i32m1(op1, op0, op2) \
+__builtin_rvv_vse32_v_i32m1((vint32m1_t)(op0), (int32_t *)(op1), (size_t)(op2))
+#define vse32_v_i32m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_i32m1_m((vint32m1_t)(op0), (int32_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse32_v_i32m2(op1, op0, op2) \
+__builtin_rvv_vse32_v_i32m2((vint32m2_t)(op0), (int32_t *)(op1), (size_t)(op2))
+#define vse32_v_i32m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_i32m2_m((vint32m2_t)(op0), (int32_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse32_v_i32m4(op1, op0, op2) \
+__builtin_rvv_vse32_v_i32m4((vint32m4_t)(op0), (int32_t *)(op1), (size_t)(op2))
+#define vse32_v_i32m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_i32m4_m((vint32m4_t)(op0), (int32_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse32_v_i32m8(op1, op0, op2) \
+__builtin_rvv_vse32_v_i32m8((vint32m8_t)(op0), (int32_t *)(op1), (size_t)(op2))
+#define vse32_v_i32m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_i32m8_m((vint32m8_t)(op0), (int32_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vse32_v_i32mf2(op1, op0, op2) \
+__builtin_rvv_vse32_v_i32mf2((vint32mf2_t)(op0), (int32_t *)(op1), (size_t)(op2))
+#define vse32_v_i32mf2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_i32mf2_m((vint32mf2_t)(op0), (int32_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse32_v_u32m1(op1, op0, op2) \
+__builtin_rvv_vse32_v_u32m1((vuint32m1_t)(op0), (uint32_t *)(op1), (size_t)(op2))
+#define vse32_v_u32m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_u32m1_m((vuint32m1_t)(op0), (uint32_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse32_v_u32m2(op1, op0, op2) \
+__builtin_rvv_vse32_v_u32m2((vuint32m2_t)(op0), (uint32_t *)(op1), (size_t)(op2))
+#define vse32_v_u32m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_u32m2_m((vuint32m2_t)(op0), (uint32_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse32_v_u32m4(op1, op0, op2) \
+__builtin_rvv_vse32_v_u32m4((vuint32m4_t)(op0), (uint32_t *)(op1), (size_t)(op2))
+#define vse32_v_u32m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_u32m4_m((vuint32m4_t)(op0), (uint32_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse32_v_u32m8(op1, op0, op2) \
+__builtin_rvv_vse32_v_u32m8((vuint32m8_t)(op0), (uint32_t *)(op1), (size_t)(op2))
+#define vse32_v_u32m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_u32m8_m((vuint32m8_t)(op0), (uint32_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vse32_v_u32mf2(op1, op0, op2) \
+__builtin_rvv_vse32_v_u32mf2((vuint32mf2_t)(op0), (uint32_t *)(op1), (size_t)(op2))
+#define vse32_v_u32mf2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_u32mf2_m((vuint32mf2_t)(op0), (uint32_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse64_v_i64m1(op1, op0, op2) \
+__builtin_rvv_vse64_v_i64m1((vint64m1_t)(op0), (int64_t *)(op1), (size_t)(op2))
+#define vse64_v_i64m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_i64m1_m((vint64m1_t)(op0), (int64_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse64_v_i64m2(op1, op0, op2) \
+__builtin_rvv_vse64_v_i64m2((vint64m2_t)(op0), (int64_t *)(op1), (size_t)(op2))
+#define vse64_v_i64m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_i64m2_m((vint64m2_t)(op0), (int64_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse64_v_i64m4(op1, op0, op2) \
+__builtin_rvv_vse64_v_i64m4((vint64m4_t)(op0), (int64_t *)(op1), (size_t)(op2))
+#define vse64_v_i64m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_i64m4_m((vint64m4_t)(op0), (int64_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse64_v_i64m8(op1, op0, op2) \
+__builtin_rvv_vse64_v_i64m8((vint64m8_t)(op0), (int64_t *)(op1), (size_t)(op2))
+#define vse64_v_i64m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_i64m8_m((vint64m8_t)(op0), (int64_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse64_v_u64m1(op1, op0, op2) \
+__builtin_rvv_vse64_v_u64m1((vuint64m1_t)(op0), (uint64_t *)(op1), (size_t)(op2))
+#define vse64_v_u64m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_u64m1_m((vuint64m1_t)(op0), (uint64_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse64_v_u64m2(op1, op0, op2) \
+__builtin_rvv_vse64_v_u64m2((vuint64m2_t)(op0), (uint64_t *)(op1), (size_t)(op2))
+#define vse64_v_u64m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_u64m2_m((vuint64m2_t)(op0), (uint64_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse64_v_u64m4(op1, op0, op2) \
+__builtin_rvv_vse64_v_u64m4((vuint64m4_t)(op0), (uint64_t *)(op1), (size_t)(op2))
+#define vse64_v_u64m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_u64m4_m((vuint64m4_t)(op0), (uint64_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse64_v_u64m8(op1, op0, op2) \
+__builtin_rvv_vse64_v_u64m8((vuint64m8_t)(op0), (uint64_t *)(op1), (size_t)(op2))
+#define vse64_v_u64m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_u64m8_m((vuint64m8_t)(op0), (uint64_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
 #define vadd_vx_i8m1(op0, op1, op2) \
 __builtin_rvv_vadd_vx_i8m1((vint8m1_t)(op0), (int8_t)(op1), (size_t)(op2))
 #define vadd_vx_i8m1_m(op3, op0, op1, op2, op4) \
@@ -447,7 +749,151 @@ __builtin_rvv_vadd_vx_u64m4_m((vuint64m4_t)(op0), (vuint64m4_t)(op1), (uint64_t)
 __builtin_rvv_vadd_vx_u64m8((vuint64m8_t)(op0), (uint64_t)(op1), (size_t)(op2))
 #define vadd_vx_u64m8_m(op3, op0, op1, op2, op4) \
 __builtin_rvv_vadd_vx_u64m8_m((vuint64m8_t)(op0), (vuint64m8_t)(op1), (uint64_t)(op2), (vbool8_t)(op3), (size_t)(op4))
+#define vse8_v_i8m1(op1, op0, op2) \
+__builtin_rvv_vse8_v_i8m1((vint8m1_t)(op0), (int8_t *)(op1), (size_t)(op2))
+#define vse8_v_i8m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_i8m1_m((vint8m1_t)(op0), (int8_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse8_v_i8m2(op1, op0, op2) \
+__builtin_rvv_vse8_v_i8m2((vint8m2_t)(op0), (int8_t *)(op1), (size_t)(op2))
+#define vse8_v_i8m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_i8m2_m((vint8m2_t)(op0), (int8_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vse8_v_i8m4(op1, op0, op2) \
+__builtin_rvv_vse8_v_i8m4((vint8m4_t)(op0), (int8_t *)(op1), (size_t)(op2))
+#define vse8_v_i8m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_i8m4_m((vint8m4_t)(op0), (int8_t *)(op1), (vbool2_t)(op2), (size_t)(op3))
+#define vse8_v_i8m8(op1, op0, op2) \
+__builtin_rvv_vse8_v_i8m8((vint8m8_t)(op0), (int8_t *)(op1), (size_t)(op2))
+#define vse8_v_i8m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_i8m8_m((vint8m8_t)(op0), (int8_t *)(op1), (vbool1_t)(op2), (size_t)(op3))
+#define vse8_v_i8mf2(op1, op0, op2) \
+__builtin_rvv_vse8_v_i8mf2((vint8mf2_t)(op0), (int8_t *)(op1), (size_t)(op2))
+#define vse8_v_i8mf2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_i8mf2_m((vint8mf2_t)(op0), (int8_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse8_v_i8mf4(op1, op0, op2) \
+__builtin_rvv_vse8_v_i8mf4((vint8mf4_t)(op0), (int8_t *)(op1), (size_t)(op2))
+#define vse8_v_i8mf4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_i8mf4_m((vint8mf4_t)(op0), (int8_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse8_v_i8mf8(op1, op0, op2) \
+__builtin_rvv_vse8_v_i8mf8((vint8mf8_t)(op0), (int8_t *)(op1), (size_t)(op2))
+#define vse8_v_i8mf8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_i8mf8_m((vint8mf8_t)(op0), (int8_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse8_v_u8m1(op1, op0, op2) \
+__builtin_rvv_vse8_v_u8m1((vuint8m1_t)(op0), (uint8_t *)(op1), (size_t)(op2))
+#define vse8_v_u8m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_u8m1_m((vuint8m1_t)(op0), (uint8_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse8_v_u8m2(op1, op0, op2) \
+__builtin_rvv_vse8_v_u8m2((vuint8m2_t)(op0), (uint8_t *)(op1), (size_t)(op2))
+#define vse8_v_u8m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_u8m2_m((vuint8m2_t)(op0), (uint8_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vse8_v_u8m4(op1, op0, op2) \
+__builtin_rvv_vse8_v_u8m4((vuint8m4_t)(op0), (uint8_t *)(op1), (size_t)(op2))
+#define vse8_v_u8m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_u8m4_m((vuint8m4_t)(op0), (uint8_t *)(op1), (vbool2_t)(op2), (size_t)(op3))
+#define vse8_v_u8m8(op1, op0, op2) \
+__builtin_rvv_vse8_v_u8m8((vuint8m8_t)(op0), (uint8_t *)(op1), (size_t)(op2))
+#define vse8_v_u8m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_u8m8_m((vuint8m8_t)(op0), (uint8_t *)(op1), (vbool1_t)(op2), (size_t)(op3))
+#define vse8_v_u8mf2(op1, op0, op2) \
+__builtin_rvv_vse8_v_u8mf2((vuint8mf2_t)(op0), (uint8_t *)(op1), (size_t)(op2))
+#define vse8_v_u8mf2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_u8mf2_m((vuint8mf2_t)(op0), (uint8_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse8_v_u8mf4(op1, op0, op2) \
+__builtin_rvv_vse8_v_u8mf4((vuint8mf4_t)(op0), (uint8_t *)(op1), (size_t)(op2))
+#define vse8_v_u8mf4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_u8mf4_m((vuint8mf4_t)(op0), (uint8_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse8_v_u8mf8(op1, op0, op2) \
+__builtin_rvv_vse8_v_u8mf8((vuint8mf8_t)(op0), (uint8_t *)(op1), (size_t)(op2))
+#define vse8_v_u8mf8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse8_v_u8mf8_m((vuint8mf8_t)(op0), (uint8_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle16_v_i16m1(op0, op1) \
+__builtin_rvv_vle16_v_i16m1((const int16_t *)(op0), (size_t)(op1))
+#define vle16_v_i16m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_i16m1_m((vint16m1_t)(op0), (const int16_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle16_v_i16m2(op0, op1) \
+__builtin_rvv_vle16_v_i16m2((const int16_t *)(op0), (size_t)(op1))
+#define vle16_v_i16m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_i16m2_m((vint16m2_t)(op0), (const int16_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vle16_v_i16m4(op0, op1) \
+__builtin_rvv_vle16_v_i16m4((const int16_t *)(op0), (size_t)(op1))
+#define vle16_v_i16m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_i16m4_m((vint16m4_t)(op0), (const int16_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vle16_v_i16m8(op0, op1) \
+__builtin_rvv_vle16_v_i16m8((const int16_t *)(op0), (size_t)(op1))
+#define vle16_v_i16m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_i16m8_m((vint16m8_t)(op0), (const int16_t *)(op1), (vbool2_t)(op2), (size_t)(op3))
+#define vle16_v_i16mf2(op0, op1) \
+__builtin_rvv_vle16_v_i16mf2((const int16_t *)(op0), (size_t)(op1))
+#define vle16_v_i16mf2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_i16mf2_m((vint16mf2_t)(op0), (const int16_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle16_v_i16mf4(op0, op1) \
+__builtin_rvv_vle16_v_i16mf4((const int16_t *)(op0), (size_t)(op1))
+#define vle16_v_i16mf4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_i16mf4_m((vint16mf4_t)(op0), (const int16_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle16_v_u16m1(op0, op1) \
+__builtin_rvv_vle16_v_u16m1((const uint16_t *)(op0), (size_t)(op1))
+#define vle16_v_u16m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_u16m1_m((vuint16m1_t)(op0), (const uint16_t *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle16_v_u16m2(op0, op1) \
+__builtin_rvv_vle16_v_u16m2((const uint16_t *)(op0), (size_t)(op1))
+#define vle16_v_u16m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_u16m2_m((vuint16m2_t)(op0), (const uint16_t *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vle16_v_u16m4(op0, op1) \
+__builtin_rvv_vle16_v_u16m4((const uint16_t *)(op0), (size_t)(op1))
+#define vle16_v_u16m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_u16m4_m((vuint16m4_t)(op0), (const uint16_t *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vle16_v_u16m8(op0, op1) \
+__builtin_rvv_vle16_v_u16m8((const uint16_t *)(op0), (size_t)(op1))
+#define vle16_v_u16m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_u16m8_m((vuint16m8_t)(op0), (const uint16_t *)(op1), (vbool2_t)(op2), (size_t)(op3))
+#define vle16_v_u16mf2(op0, op1) \
+__builtin_rvv_vle16_v_u16mf2((const uint16_t *)(op0), (size_t)(op1))
+#define vle16_v_u16mf2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_u16mf2_m((vuint16mf2_t)(op0), (const uint16_t *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle16_v_u16mf4(op0, op1) \
+__builtin_rvv_vle16_v_u16mf4((const uint16_t *)(op0), (size_t)(op1))
+#define vle16_v_u16mf4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle16_v_u16mf4_m((vuint16mf4_t)(op0), (const uint16_t *)(op1), (vbool64_t)(op2), (size_t)(op3))
 #if defined(__riscv_f)
+#define vle32_v_f32m1(op0, op1) \
+__builtin_rvv_vle32_v_f32m1((const float *)(op0), (size_t)(op1))
+#define vle32_v_f32m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_f32m1_m((vfloat32m1_t)(op0), (const float *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle32_v_f32m2(op0, op1) \
+__builtin_rvv_vle32_v_f32m2((const float *)(op0), (size_t)(op1))
+#define vle32_v_f32m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_f32m2_m((vfloat32m2_t)(op0), (const float *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle32_v_f32m4(op0, op1) \
+__builtin_rvv_vle32_v_f32m4((const float *)(op0), (size_t)(op1))
+#define vle32_v_f32m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_f32m4_m((vfloat32m4_t)(op0), (const float *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vle32_v_f32m8(op0, op1) \
+__builtin_rvv_vle32_v_f32m8((const float *)(op0), (size_t)(op1))
+#define vle32_v_f32m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_f32m8_m((vfloat32m8_t)(op0), (const float *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vle32_v_f32mf2(op0, op1) \
+__builtin_rvv_vle32_v_f32mf2((const float *)(op0), (size_t)(op1))
+#define vle32_v_f32mf2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle32_v_f32mf2_m((vfloat32mf2_t)(op0), (const float *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse32_v_f32m1(op1, op0, op2) \
+__builtin_rvv_vse32_v_f32m1((vfloat32m1_t)(op0), (float *)(op1), (size_t)(op2))
+#define vse32_v_f32m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_f32m1_m((vfloat32m1_t)(op0), (float *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse32_v_f32m2(op1, op0, op2) \
+__builtin_rvv_vse32_v_f32m2((vfloat32m2_t)(op0), (float *)(op1), (size_t)(op2))
+#define vse32_v_f32m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_f32m2_m((vfloat32m2_t)(op0), (float *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse32_v_f32m4(op1, op0, op2) \
+__builtin_rvv_vse32_v_f32m4((vfloat32m4_t)(op0), (float *)(op1), (size_t)(op2))
+#define vse32_v_f32m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_f32m4_m((vfloat32m4_t)(op0), (float *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse32_v_f32m8(op1, op0, op2) \
+__builtin_rvv_vse32_v_f32m8((vfloat32m8_t)(op0), (float *)(op1), (size_t)(op2))
+#define vse32_v_f32m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_f32m8_m((vfloat32m8_t)(op0), (float *)(op1), (vbool4_t)(op2), (size_t)(op3))
+#define vse32_v_f32mf2(op1, op0, op2) \
+__builtin_rvv_vse32_v_f32mf2((vfloat32mf2_t)(op0), (float *)(op1), (size_t)(op2))
+#define vse32_v_f32mf2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse32_v_f32mf2_m((vfloat32mf2_t)(op0), (float *)(op1), (vbool64_t)(op2), (size_t)(op3))
 #define vfadd_vv_f32m1(op0, op1, op2) \
 __builtin_rvv_vfadd_vv_f32m1((vfloat32m1_t)(op0), (vfloat32m1_t)(op1), (size_t)(op2))
 #define vfadd_vv_f32m1_m(op3, op0, op1, op2, op4) \
@@ -491,6 +937,38 @@ __builtin_rvv_vfadd_vf_f32mf2_m((vfloat32mf2_t)(op0), (vfloat32mf2_t)(op1), (flo
 #endif
 
 #if defined(__riscv_d)
+#define vle64_v_f64m1(op0, op1) \
+__builtin_rvv_vle64_v_f64m1((const double *)(op0), (size_t)(op1))
+#define vle64_v_f64m1_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_f64m1_m((vfloat64m1_t)(op0), (const double *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vle64_v_f64m2(op0, op1) \
+__builtin_rvv_vle64_v_f64m2((const double *)(op0), (size_t)(op1))
+#define vle64_v_f64m2_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_f64m2_m((vfloat64m2_t)(op0), (const double *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vle64_v_f64m4(op0, op1) \
+__builtin_rvv_vle64_v_f64m4((const double *)(op0), (size_t)(op1))
+#define vle64_v_f64m4_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_f64m4_m((vfloat64m4_t)(op0), (const double *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vle64_v_f64m8(op0, op1) \
+__builtin_rvv_vle64_v_f64m8((const double *)(op0), (size_t)(op1))
+#define vle64_v_f64m8_m(op2, op0, op1, op3) \
+__builtin_rvv_vle64_v_f64m8_m((vfloat64m8_t)(op0), (const double *)(op1), (vbool8_t)(op2), (size_t)(op3))
+#define vse64_v_f64m1(op1, op0, op2) \
+__builtin_rvv_vse64_v_f64m1((vfloat64m1_t)(op0), (double *)(op1), (size_t)(op2))
+#define vse64_v_f64m1_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_f64m1_m((vfloat64m1_t)(op0), (double *)(op1), (vbool64_t)(op2), (size_t)(op3))
+#define vse64_v_f64m2(op1, op0, op2) \
+__builtin_rvv_vse64_v_f64m2((vfloat64m2_t)(op0), (double *)(op1), (size_t)(op2))
+#define vse64_v_f64m2_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_f64m2_m((vfloat64m2_t)(op0), (double *)(op1), (vbool32_t)(op2), (size_t)(op3))
+#define vse64_v_f64m4(op1, op0, op2) \
+__builtin_rvv_vse64_v_f64m4((vfloat64m4_t)(op0), (double *)(op1), (size_t)(op2))
+#define vse64_v_f64m4_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_f64m4_m((vfloat64m4_t)(op0), (double *)(op1), (vbool16_t)(op2), (size_t)(op3))
+#define vse64_v_f64m8(op1, op0, op2) \
+__builtin_rvv_vse64_v_f64m8((vfloat64m8_t)(op0), (double *)(op1), (size_t)(op2))
+#define vse64_v_f64m8_m(op2, op1, op0, op3) \
+__builtin_rvv_vse64_v_f64m8_m((vfloat64m8_t)(op0), (double *)(op1), (vbool8_t)(op2), (size_t)(op3))
 #define vfadd_vv_f64m1(op0, op1, op2) \
 __builtin_rvv_vfadd_vv_f64m1((vfloat64m1_t)(op0), (vfloat64m1_t)(op1), (size_t)(op2))
 #define vfadd_vv_f64m1_m(op3, op0, op1, op2, op4) \
