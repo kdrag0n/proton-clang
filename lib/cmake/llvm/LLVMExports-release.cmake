@@ -1348,15 +1348,6 @@ set_target_properties(llvm-rtdyld PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS llvm-rtdyld )
 list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-rtdyld "${_IMPORT_PREFIX}/bin/llvm-rtdyld" )
 
-# Import target "llvm-sim" for configuration "Release"
-set_property(TARGET llvm-sim APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(llvm-sim PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/bin/llvm-sim"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS llvm-sim )
-list(APPEND _IMPORT_CHECK_FILES_FOR_llvm-sim "${_IMPORT_PREFIX}/bin/llvm-sim" )
-
 # Import target "llvm-size" for configuration "Release"
 set_property(TARGET llvm-size APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(llvm-size PROPERTIES
