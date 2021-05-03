@@ -1476,16 +1476,6 @@ set_target_properties(PollyISL PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS PollyISL )
 list(APPEND _IMPORT_CHECK_FILES_FOR_PollyISL "${_IMPORT_PREFIX}/lib/libPollyISL.a" )
 
-# Import target "PollyPPCG" for configuration "Release"
-set_property(TARGET PollyPPCG APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(PollyPPCG PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C"
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libPollyPPCG.a"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS PollyPPCG )
-list(APPEND _IMPORT_CHECK_FILES_FOR_PollyPPCG "${_IMPORT_PREFIX}/lib/libPollyPPCG.a" )
-
 # Import target "Polly" for configuration "Release"
 set_property(TARGET Polly APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(Polly PROPERTIES
