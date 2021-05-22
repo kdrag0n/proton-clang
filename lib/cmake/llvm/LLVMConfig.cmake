@@ -208,6 +208,8 @@ set(LLVM_ENABLE_SHARED_LIBS OFF)
 set(LLVM_DEFAULT_EXTERNAL_LIT "/root/build/build/llvm/stage3/./bin/llvm-lit")
 set(LLVM_LIT_ARGS "-sv")
 
+set(LLVM_HAVE_LIBXAR "")
+
 if(NOT TARGET LLVMSupport)
   include("${LLVM_CMAKE_DIR}/LLVMExports.cmake")
   
